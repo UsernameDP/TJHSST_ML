@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1761076885.99509 "main.aux" "main.bbl" "main" 1761076888.09464 0
+["bibtex main"] 1761076885.99509 "main.aux" "main.bbl" "main" 1761100675.02717 0
   "./references.bib" 1761075178.85722 343 efab6e646a9e7e826308aa03c8539a8d ""
   "/usr/share/texmf-dist/bibtex/bst/apacite/apacite.bst" 1755987285 141073 9d7b79dbf9d91133318126032cff8c27 ""
-  "main.aux" 1761076887.73078 20298 f7843434016372c838b4546f901ceece "pdflatex"
+  "main.aux" 1761100674.62469 20298 f7843434016372c838b4546f901ceece "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1761076886.15477 "/home/devin/Code/TJHSST-ML/Q1Project/Lab_Report/main.tex" "main.pdf" "main" 1761076888.09489 0
-  "/home/devin/Code/TJHSST-ML/Q1Project/Lab_Report/main.tex" 1761076883.69068 51819 c5b679c15489af175ad7c0445386be52 ""
+["pdflatex"] 1761100672.94102 "/home/devin/Code/TJHSST-ML/Q1Project/Lab_Report/main.tex" "main.pdf" "main" 1761100675.02745 0
+  "/home/devin/Code/TJHSST-ML/Q1Project/Lab_Report/main.tex" 1761100672.65965 51744 2a322138eb26d6ab2410a56cde7ca8a8 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1755987285 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1755987285 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1755987285 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -166,11 +166,11 @@
   "ModelSelection_Train/OneR + GainRatioAttributeEval.txt" 1761070279.62491 1318 122c5b9364d96b9954b5139bc17d1d39 ""
   "ModelSelection_Train/OneR + InfoGainAttributeEval.txt" 1761070284.69742 1318 617c73cb079cdfbfb4995509132afb4d ""
   "ModelSelection_Train/OneR + SelfSelected.txt" 1761070290.13668 1318 617c73cb079cdfbfb4995509132afb4d ""
-  "main.aux" 1761076887.73078 20298 f7843434016372c838b4546f901ceece "pdflatex"
+  "main.aux" 1761100674.62469 20298 f7843434016372c838b4546f901ceece "pdflatex"
   "main.bbl" 1761076886.14974 735 d29952cf1af720ffe79b51b111d513e3 "bibtex main"
-  "main.out" 1761076887.73278 11248 4f82957ff694979394ea0c62a622a31b "pdflatex"
-  "main.tex" 1761076883.69068 51819 c5b679c15489af175ad7c0445386be52 ""
-  "main.toc" 1761076887.73351 5875 f95449b1da9de7a35d2cd182604cccfc "pdflatex"
+  "main.out" 1761100674.62669 11248 4f82957ff694979394ea0c62a622a31b "pdflatex"
+  "main.tex" 1761100672.65965 51744 2a322138eb26d6ab2410a56cde7ca8a8 ""
+  "main.toc" 1761100674.62669 5875 f95449b1da9de7a35d2cd182604cccfc "pdflatex"
   (generated)
   "main.aux"
   "main.log"
