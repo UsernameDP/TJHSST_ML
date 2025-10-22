@@ -1,0 +1,190 @@
+=== Run information ===
+
+Evaluator:    weka.attributeSelection.GainRatioAttributeEval 
+Search:       weka.attributeSelection.Ranker -T -1.7976931348623157E308 -N -1
+Relation:     final_train
+Instances:    74014
+Attributes:   80
+              latitude
+              longitude
+              primaryPurposeId
+              nidHeight
+              ownerTypeIds__1
+              ownerTypeIds__2
+              ownerTypeIds__3
+              ownerTypeIds__4
+              ownerTypeIds__5
+              ownerTypeIds__6
+              primaryOwnerTypeId
+              separateStructuresCount
+              isAssociatedStructureId
+              nonFederalDamOnFederalId
+              purposeIds__1
+              purposeIds__2
+              purposeIds__3
+              purposeIds__4
+              purposeIds__5
+              purposeIds__6
+              purposeIds__7
+              purposeIds__8
+              purposeIds__9
+              purposeIds__10
+              purposeIds__11
+              purposeIds__12
+              state
+              distance
+              stateRegulatedId
+              fedRegulatedId
+              jurisdictionAuthorityId
+              permittingAuthorityId
+              inspectionAuthorityId
+              enforcementAuthorityId
+              secretaryAgricultureBuiltId
+              nrcsWatershedAuthorizationId
+              primaryDamTypeId
+              damTypeIds__1
+              damTypeIds__2
+              damTypeIds__3
+              damTypeIds__4
+              damTypeIds__5
+              damTypeIds__6
+              damTypeIds__7
+              damTypeIds__8
+              damTypeIds__9
+              damTypeIds__10
+              damTypeIds__11
+              damTypeIds__12
+              coreTypeIds__1
+              coreTypeIds__2
+              coreTypeIds__3
+              coreTypeIds__4
+              coreTypeIds__5
+              coreTypeIds__6
+              foundationTypeIds__1
+              foundationTypeIds__2
+              foundationTypeIds__3
+              foundationTypeIds__4
+              damHeight
+              hydraulicHeight
+              structuralHeight
+              nidHeightId
+              damLength
+              volume
+              nidStorage
+              maxStorage
+              normalStorage
+              surfaceArea
+              drainageArea
+              maxDischarge
+              spillwayTypeId
+              spillwayWidth
+              numberOfLocks
+              lengthOfLocks
+              widthOfLocks
+              privateDamId
+              huc2
+              femaRegion
+              hazardId
+Evaluation mode:    evaluate on all training data
+
+
+
+=== Attribute Selection on all input data ===
+
+Search Method:
+	Attribute ranking.
+
+Attribute Evaluator (supervised, Class (nominal): 80 hazardId):
+	Gain Ratio feature evaluator
+
+Ranked attributes:
+ 0.19009    10 ownerTypeIds__6
+ 0.17827    57 foundationTypeIds__2
+ 0.14918    41 damTypeIds__4
+ 0.14019    76 widthOfLocks
+ 0.13088    75 lengthOfLocks
+ 0.09654    38 damTypeIds__1
+ 0.09366    13 isAssociatedStructureId
+ 0.0924     56 foundationTypeIds__1
+ 0.0921     50 coreTypeIds__1
+ 0.09185    44 damTypeIds__7
+ 0.08104    17 purposeIds__3
+ 0.07924     6 ownerTypeIds__2
+ 0.07435    24 purposeIds__10
+ 0.06903    63 nidHeightId
+ 0.06611    39 damTypeIds__2
+ 0.06589    27 state
+ 0.06566    30 fedRegulatedId
+ 0.06542    22 purposeIds__8
+ 0.06002    20 purposeIds__6
+ 0.05485    51 coreTypeIds__2
+ 0.05312    78 huc2
+ 0.05251    25 purposeIds__11
+ 0.05188    79 femaRegion
+ 0.0462     11 primaryOwnerTypeId
+ 0.0456     15 purposeIds__1
+ 0.04241    48 damTypeIds__11
+ 0.04043     3 primaryPurposeId
+ 0.03963    42 damTypeIds__5
+ 0.03665     5 ownerTypeIds__1
+ 0.03459    65 volume
+ 0.03214     7 ownerTypeIds__3
+ 0.03021     9 ownerTypeIds__5
+ 0.03017    37 primaryDamTypeId
+ 0.02763    61 hydraulicHeight
+ 0.02736    40 damTypeIds__3
+ 0.02731    60 damHeight
+ 0.02703    62 structuralHeight
+ 0.026      66 nidStorage
+ 0.02499     2 longitude
+ 0.0248     58 foundationTypeIds__3
+ 0.02458    29 stateRegulatedId
+ 0.02412    67 maxStorage
+ 0.024      71 maxDischarge
+ 0.02362    54 coreTypeIds__5
+ 0.02222     4 nidHeight
+ 0.02208    53 coreTypeIds__4
+ 0.02067    46 damTypeIds__9
+ 0.01995    49 damTypeIds__12
+ 0.01954    68 normalStorage
+ 0.01922    23 purposeIds__9
+ 0.01904    35 secretaryAgricultureBuiltId
+ 0.0187     73 spillwayWidth
+ 0.01777    19 purposeIds__5
+ 0.01763    55 coreTypeIds__6
+ 0.01752    52 coreTypeIds__3
+ 0.01663    72 spillwayTypeId
+ 0.01588    36 nrcsWatershedAuthorizationId
+ 0.01561    47 damTypeIds__10
+ 0.01545    34 enforcementAuthorityId
+ 0.01544    32 permittingAuthorityId
+ 0.01478    70 drainageArea
+ 0.01453    69 surfaceArea
+ 0.01424    28 distance
+ 0.01422    31 jurisdictionAuthorityId
+ 0.01386    59 foundationTypeIds__4
+ 0.01381    43 damTypeIds__6
+ 0.01373     1 latitude
+ 0.01206    64 damLength
+ 0.01014     8 ownerTypeIds__4
+ 0.00886    18 purposeIds__4
+ 0.00807    21 purposeIds__7
+ 0.00745    33 inspectionAuthorityId
+ 0.00329    77 privateDamId
+ 0.00328    14 nonFederalDamOnFederalId
+ 0.00291    26 purposeIds__12
+ 0.00195    45 damTypeIds__8
+ 0.00192    16 purposeIds__2
+ 0          74 numberOfLocks
+ 0          12 separateStructuresCount
+
+Selected attributes: 
+10,57,41,76,75,38,13,56,50,
+44,17,6,24,63,39,27,30,22,20,
+51,78,25,79,11,15,48,3,42,5,
+65,7,9,37,61,40,60,62,66,2,58,
+29,67,71,54,4,53,46,49,68,23,35,
+73,19,55,52,72,36,47,34,32,70,
+69,28,31,59,43,1,64,8,18,21,33,
+77,14,26,45,16,74,12 : 79
+

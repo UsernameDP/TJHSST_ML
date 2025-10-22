@@ -1,0 +1,113 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     train_GainRatioAttributeEval
+Instances:    74014
+Attributes:   12
+              ownerTypeIds__6
+              foundationTypeIds__2
+              damTypeIds__4
+              widthOfLocks
+              lengthOfLocks
+              damTypeIds__1
+              isAssociatedStructureId
+              foundationTypeIds__1
+              coreTypeIds__1
+              damTypeIds__7
+              purposeIds__3
+              hazardId
+Test mode:    evaluate on training data
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+ownerTypeIds__6 = F
+|   isAssociatedStructureId = val_0
+|   |   damTypeIds__7 = F
+|   |   |   foundationTypeIds__1 = T
+|   |   |   |   widthOfLocks = (-0.001, 0.47]: val_4 (3275.0/1609.0)
+|   |   |   |   widthOfLocks = (0.47, 110.0]
+|   |   |   |   |   purposeIds__3 = F: val_2 (2.0/1.0)
+|   |   |   |   |   purposeIds__3 = T: val_3 (65.0/22.0)
+|   |   |   foundationTypeIds__1 = F
+|   |   |   |   foundationTypeIds__2 = F
+|   |   |   |   |   widthOfLocks = (-0.001, 0.47]
+|   |   |   |   |   |   damTypeIds__4 = F
+|   |   |   |   |   |   |   damTypeIds__1 = F
+|   |   |   |   |   |   |   |   purposeIds__3 = F: val_2 (67366.0/20979.0)
+|   |   |   |   |   |   |   |   purposeIds__3 = T: val_4 (87.0/48.0)
+|   |   |   |   |   |   |   damTypeIds__1 = T: val_4 (155.0/55.0)
+|   |   |   |   |   |   damTypeIds__4 = T: val_4 (21.0/2.0)
+|   |   |   |   |   widthOfLocks = (0.47, 110.0]: val_3 (75.0/18.0)
+|   |   |   |   foundationTypeIds__2 = T: val_4 (9.0)
+|   |   damTypeIds__7 = T
+|   |   |   foundationTypeIds__1 = T
+|   |   |   |   purposeIds__3 = F: val_4 (101.0/61.0)
+|   |   |   |   purposeIds__3 = T: val_2 (3.0/1.0)
+|   |   |   foundationTypeIds__1 = F
+|   |   |   |   purposeIds__3 = F
+|   |   |   |   |   damTypeIds__1 = F: val_3 (819.0/396.0)
+|   |   |   |   |   damTypeIds__1 = T: val_4 (10.0/5.0)
+|   |   |   |   purposeIds__3 = T: val_2 (3.0/1.0)
+|   isAssociatedStructureId = val_1
+|   |   widthOfLocks = (-0.001, 0.47]
+|   |   |   damTypeIds__7 = F: val_4 (714.0/247.0)
+|   |   |   damTypeIds__7 = T: val_2 (20.0/10.0)
+|   |   widthOfLocks = (0.47, 110.0]: val_3 (3.0/1.0)
+ownerTypeIds__6 = T
+|   foundationTypeIds__1 = T
+|   |   isAssociatedStructureId = val_0: val_4 (54.0/24.0)
+|   |   isAssociatedStructureId = val_1
+|   |   |   damTypeIds__7 = F: val_3 (2.0)
+|   |   |   damTypeIds__7 = T: val_2 (3.0/1.0)
+|   foundationTypeIds__1 = F
+|   |   isAssociatedStructureId = val_0
+|   |   |   damTypeIds__7 = F
+|   |   |   |   purposeIds__3 = F: val_1 (1160.0/518.0)
+|   |   |   |   purposeIds__3 = T: val_4 (8.0/4.0)
+|   |   |   damTypeIds__7 = T: val_4 (18.0/12.0)
+|   |   isAssociatedStructureId = val_1
+|   |   |   purposeIds__3 = F: val_4 (19.0/7.0)
+|   |   |   purposeIds__3 = T: val_2 (22.0/7.0)
+
+Number of Leaves  : 	25
+
+Size of the tree : 	49
+
+
+Time taken to build model: 0.53 seconds
+
+=== Evaluation on training set ===
+
+Time taken to test model on training data: 0.08 seconds
+
+=== Summary ===
+
+Correctly Classified Instances       49985               67.5345 %
+Incorrectly Classified Instances     24029               32.4655 %
+Kappa statistic                          0.1722
+Mean absolute error                      0.2477
+Root mean squared error                  0.3519
+Relative absolute error                 94.5042 %
+Root relative squared error             97.2144 %
+Total Number of Instances            74014     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.178    0.034    0.536      0.178    0.268      0.233    0.579     0.259     val_4
+                 0.961    0.817    0.689      0.961    0.802      0.240    0.572     0.688     val_2
+                 0.197    0.007    0.553      0.197    0.291      0.314    0.625     0.148     val_1
+                 0.058    0.007    0.547      0.058    0.106      0.149    0.542     0.160     val_3
+Weighted Avg.    0.675    0.541    0.638      0.675    0.598      0.231    0.572     0.522     
+
+=== Confusion Matrix ===
+
+     a     b     c     d   <-- classified as
+  2397 10688   120   233 |     a = val_4
+  1390 46419   303   199 |     b = val_2
+     3  2604   642     5 |     c = val_1
+   681  7708    95   527 |     d = val_3
+

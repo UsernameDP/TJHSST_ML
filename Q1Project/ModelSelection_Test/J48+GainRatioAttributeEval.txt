@@ -1,0 +1,132 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.misc.InputMappedClassifier -I -trim -W weka.classifiers.trees.J48 -- -C 0.25 -M 2
+Relation:     train_GainRatioAttributeEval
+Instances:    74014
+Attributes:   12
+              ownerTypeIds__6
+              foundationTypeIds__2
+              damTypeIds__4
+              widthOfLocks
+              lengthOfLocks
+              damTypeIds__1
+              isAssociatedStructureId
+              foundationTypeIds__1
+              coreTypeIds__1
+              damTypeIds__7
+              purposeIds__3
+              hazardId
+Test mode:    user supplied test set:  size unknown (reading incrementally)
+
+=== Classifier model (full training set) ===
+
+InputMappedClassifier:
+
+J48 pruned tree
+------------------
+
+ownerTypeIds__6 = F
+|   isAssociatedStructureId = val_0
+|   |   damTypeIds__7 = F
+|   |   |   foundationTypeIds__1 = T
+|   |   |   |   widthOfLocks = (-0.001, 0.47]: val_4 (3275.0/1609.0)
+|   |   |   |   widthOfLocks = (0.47, 110.0]
+|   |   |   |   |   purposeIds__3 = F: val_2 (2.0/1.0)
+|   |   |   |   |   purposeIds__3 = T: val_3 (65.0/22.0)
+|   |   |   foundationTypeIds__1 = F
+|   |   |   |   foundationTypeIds__2 = F
+|   |   |   |   |   widthOfLocks = (-0.001, 0.47]
+|   |   |   |   |   |   damTypeIds__4 = F
+|   |   |   |   |   |   |   damTypeIds__1 = F
+|   |   |   |   |   |   |   |   purposeIds__3 = F: val_2 (67366.0/20979.0)
+|   |   |   |   |   |   |   |   purposeIds__3 = T: val_4 (87.0/48.0)
+|   |   |   |   |   |   |   damTypeIds__1 = T: val_4 (155.0/55.0)
+|   |   |   |   |   |   damTypeIds__4 = T: val_4 (21.0/2.0)
+|   |   |   |   |   widthOfLocks = (0.47, 110.0]: val_3 (75.0/18.0)
+|   |   |   |   foundationTypeIds__2 = T: val_4 (9.0)
+|   |   damTypeIds__7 = T
+|   |   |   foundationTypeIds__1 = T
+|   |   |   |   purposeIds__3 = F: val_4 (101.0/61.0)
+|   |   |   |   purposeIds__3 = T: val_2 (3.0/1.0)
+|   |   |   foundationTypeIds__1 = F
+|   |   |   |   purposeIds__3 = F
+|   |   |   |   |   damTypeIds__1 = F: val_3 (819.0/396.0)
+|   |   |   |   |   damTypeIds__1 = T: val_4 (10.0/5.0)
+|   |   |   |   purposeIds__3 = T: val_2 (3.0/1.0)
+|   isAssociatedStructureId = val_1
+|   |   widthOfLocks = (-0.001, 0.47]
+|   |   |   damTypeIds__7 = F: val_4 (714.0/247.0)
+|   |   |   damTypeIds__7 = T: val_2 (20.0/10.0)
+|   |   widthOfLocks = (0.47, 110.0]: val_3 (3.0/1.0)
+ownerTypeIds__6 = T
+|   foundationTypeIds__1 = T
+|   |   isAssociatedStructureId = val_0: val_4 (54.0/24.0)
+|   |   isAssociatedStructureId = val_1
+|   |   |   damTypeIds__7 = F: val_3 (2.0)
+|   |   |   damTypeIds__7 = T: val_2 (3.0/1.0)
+|   foundationTypeIds__1 = F
+|   |   isAssociatedStructureId = val_0
+|   |   |   damTypeIds__7 = F
+|   |   |   |   purposeIds__3 = F: val_1 (1160.0/518.0)
+|   |   |   |   purposeIds__3 = T: val_4 (8.0/4.0)
+|   |   |   damTypeIds__7 = T: val_4 (18.0/12.0)
+|   |   isAssociatedStructureId = val_1
+|   |   |   purposeIds__3 = F: val_4 (19.0/7.0)
+|   |   |   purposeIds__3 = T: val_2 (22.0/7.0)
+
+Number of Leaves  : 	25
+
+Size of the tree : 	49
+
+Attribute mappings:
+
+Model attributes                   	    Incoming attributes
+-----------------------------------	    ----------------
+(nominal) ownerTypeIds__6          	--> 1 (nominal) ownerTypeIds__6
+(nominal) foundationTypeIds__2     	--> 2 (nominal) foundationTypeIds__2
+(nominal) damTypeIds__4            	--> 3 (nominal) damTypeIds__4
+(nominal) widthOfLocks             	--> 4 (nominal) widthOfLocks
+(nominal) lengthOfLocks            	--> 5 (nominal) lengthOfLocks
+(nominal) damTypeIds__1            	--> 6 (nominal) damTypeIds__1
+(nominal) isAssociatedStructureId  	--> 7 (nominal) isAssociatedStructureId
+(nominal) foundationTypeIds__1     	--> 8 (nominal) foundationTypeIds__1
+(nominal) coreTypeIds__1           	--> 9 (nominal) coreTypeIds__1
+(nominal) damTypeIds__7            	--> 10 (nominal) damTypeIds__7
+(nominal) purposeIds__3            	--> 11 (nominal) purposeIds__3
+(nominal) hazardId                 	--> 12 (nominal) hazardId
+
+
+Time taken to build model: 0.49 seconds
+
+=== Evaluation on test set ===
+
+Time taken to test model on supplied test set: 0.06 seconds
+
+=== Summary ===
+
+Correctly Classified Instances       12388               66.9477 %
+Incorrectly Classified Instances      6116               33.0523 %
+Kappa statistic                          0.161 
+Mean absolute error                      0.2491
+Root mean squared error                  0.3539
+Relative absolute error                 94.8142 %
+Root relative squared error             97.5402 %
+Total Number of Instances            18504     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.168    0.034    0.522      0.168    0.254      0.219    0.571     0.253     val_4
+                 0.959    0.826    0.683      0.959    0.798      0.225    0.568     0.683     val_2
+                 0.181    0.008    0.481      0.181    0.263      0.278    0.617     0.124     val_1
+                 0.064    0.006    0.616      0.064    0.116      0.170    0.544     0.171     val_3
+Weighted Avg.    0.669    0.544    0.637      0.669    0.590      0.219    0.567     0.516     
+
+=== Confusion Matrix ===
+
+     a     b     c     d   <-- classified as
+   570  2754    23    47 |     a = val_4
+   345 11532   102    44 |     b = val_2
+     1   616   137     2 |     c = val_1
+   175  1984    23   149 |     d = val_3
+

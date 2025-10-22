@@ -1,0 +1,62 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.OneR -B 6
+Relation:     train_GainRatioAttributeEval
+Instances:    74014
+Attributes:   12
+              ownerTypeIds__6
+              foundationTypeIds__2
+              damTypeIds__4
+              widthOfLocks
+              lengthOfLocks
+              damTypeIds__1
+              isAssociatedStructureId
+              foundationTypeIds__1
+              coreTypeIds__1
+              damTypeIds__7
+              purposeIds__3
+              hazardId
+Test mode:    evaluate on training data
+
+=== Classifier model (full training set) ===
+
+foundationTypeIds__1:
+	T	-> val_4
+	F	-> val_2
+(48975/74014 instances correct)
+
+
+Time taken to build model: 0.01 seconds
+
+=== Evaluation on training set ===
+
+Time taken to test model on training data: 0.03 seconds
+
+=== Summary ===
+
+Correctly Classified Instances       48975               66.1699 %
+Incorrectly Classified Instances     25039               33.8301 %
+Kappa statistic                          0.0869
+Mean absolute error                      0.1692
+Root mean squared error                  0.4113
+Relative absolute error                 64.5318 %
+Root relative squared error            113.6075 %
+Total Number of Instances            74014     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.137    0.030    0.505      0.137    0.216      0.191    0.554     0.226     val_4
+                 0.976    0.904    0.670      0.976    0.794      0.157    0.536     0.669     val_2
+                 0.000    0.000    ?          0.000    ?          ?        0.500     0.044     val_1
+                 0.000    0.000    ?          0.000    ?          ?        0.500     0.122     val_3
+Weighted Avg.    0.662    0.595    ?          0.662    ?          ?        0.533     0.495     
+
+=== Confusion Matrix ===
+
+     a     b     c     d   <-- classified as
+  1845 11593     0     0 |     a = val_4
+  1181 47130     0     0 |     b = val_2
+     1  3253     0     0 |     c = val_1
+   623  8388     0     0 |     d = val_3
+

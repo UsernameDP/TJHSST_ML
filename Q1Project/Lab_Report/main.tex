@@ -1,0 +1,879 @@
+\documentclass{article}
+\usepackage{graphicx} 
+\usepackage{longtable}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{xcolor}
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    backgroundcolor=\color{gray!5},
+    frame=single,
+    breaklines=false,            % don't wrap lines, we'll truncate instead
+    showstringspaces=false,
+    columns=flexible,
+    breakatwhitespace=false,
+    xleftmargin=2em,
+    linewidth=\linewidth,
+    prebreak=\mbox{},            % no symbol before the break
+    postbreak=\mbox{},           % no continuation symbol
+}
+\definecolor{linkblue}{RGB}{20,60,120}
+\definecolor{urlblue}{RGB}{70,130,250}
+\usepackage[
+    colorlinks=true,
+    linkcolor=linkblue,      % section refs, figure refs, etc.
+    citecolor=linkblue,      % citations
+    filecolor=linkblue,      % local file links
+    urlcolor=urlblue,        % external URLs
+    anchorcolor=linkblue,
+]{hyperref}
+\usepackage{apacite}
+
+
+\usepackage[margin=1.2in]{geometry}   
+\usepackage{array}
+\usepackage{setspace}
+\setstretch{0.95}                   
+
+\title{NTAD Dam Hazard Classification Predictive Model}
+\author{Devin Park}
+\date{October 2025}
+
+
+
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+
+\section{Project Goal}
+The primary objective of this project is to construct a predictive model for assessing the hazard potential of dams using the NTAD\_Dams dataset. The model aims to classify dams according to their hazard status by analyzing a combination of environmental, structural, and locational attributes. This study employs interpretable machine learning algorithms, including OneR, Naive Bayes, J48, and BayesNet, to evaluate and compare their predictive performance in identifying high risk dams. By determining the most influential factors contributing to hazard classification, this project seeks to provide data driven insights that can inform public safety decisions, guide hazard mitigation efforts, and support agencies such as FEMA and the United States Army Corps of Engineers in the prioritization of dam inspections and maintenance planning.
+
+
+
+\section{Description of Dataset}\label{sec:Description of Dataset}
+The dataset used in this study is a representation of the National Inventory of Dams, which is maintained and published by the United States Army Corps of Engineers in cooperation with the Association of State Dam Safety Officials, as well as state, territorial, and federal agencies \cite{USDOT_Dams_NTAD}. 
+It is also part of the United States Department of Transportation Bureau of Transportation Statistics National Transportation Atlas Database. 
+The dataset documents more than ninety thousand dams across the United States and its territories and serves as a comprehensive resource for understanding dam characteristics and hazard potential. 
+The dataset classifies dams according to hazard potential (High, Significant, Low, Undetermined), which reflects the probable consequences of failure, not the probability of failure itself.
+In the dataset, each hazard potential category is assigned an id: High is 4, Signifcant is 3, Low is 2, and Undetermined is 1. The class for our machine learning models become \textbf{hazardId}.
+
+\subsection*{Official Attributes and Definitions}
+The following list enumerates the official attribute names and their definitions as provided in the accompanying data dictionary \href{ https://doi.org/10.21949/1529016}{https://doi.org/10.21949/1529016}
+
+\begin{longtable}{p{0.35\linewidth} p{0.6\linewidth}}
+\hline
+\textbf{Attribute} & \textbf{Definition} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Attribute} & \textbf{Definition} \\
+\hline
+\endhead
+\hline
+\endfoot
+\textbf{OBJECTID} & Internal feature number. \\\hline
+\textbf{id} & Unique identifier. \\\hline
+\textbf{federalId} & The unique identifier for each dam record. For most dams, federalID is the NID ID of the dam prior to the NID data transmittal by the submitting agency. \\\hline
+\textbf{name} & The official name of the dam. For dams that do not have an official name, one is assigned by the agency. \\\hline
+\textbf{latitude} & Dam latitude as a single value, in decimal degrees. \\\hline
+\textbf{longitude} & Dam longitude as a single value, in decimal degrees. \\\hline
+\textbf{hazardId} & Category indicating potential hazard to the downstream area if a failure were to occur. \\\hline
+\textbf{hazard} & Hazard potential classification as a text value. \\\hline
+\textbf{city} & Name of the nearest city to the dam. \\\hline
+\textbf{county} & County name where the dam is located. \\\hline
+\textbf{state} & Two letter postal abbreviation for the state where the dam is located. \\\hline
+\textbf{nidHeight} & Maximum retaining height of the dam, measured in feet. \\\hline
+\textbf{nidStorage} & Maximum storage at the dam, measured in acre feet. \\\hline
+\textbf{nidSurfaceArea} & Surface area of the reservoir at normal storage, measured in acres. \\\hline
+\textbf{nidDrainageArea} & Size of the area that drains into the reservoir, measured in square miles. \\\hline
+\textbf{nidCrestLength} & Length of the dam, measured along the top of the dam, in feet. \\\hline
+\textbf{nidCrestElevation} & Elevation of the top of the dam, measured in feet above mean sea level. \\\hline
+\textbf{nidType} & Types of materials used to construct the dam. \\\hline
+\textbf{nidOwnerType} & Type of ownership. \\\hline
+\textbf{nidOwnerName} & Owner name. \\\hline
+\textbf{nidPrimaryPurposeId} & Code for the primary purpose of the dam. \\\hline
+\textbf{nidPrimaryPurpose} & Description of the primary purpose of the dam. \\\hline
+\textbf{nidOtherPurposeId} & Code for the other purposes of the dam. \\\hline
+\textbf{nidOtherPurpose} & Description of the other purposes of the dam. \\\hline
+\textbf{nidYearCompleted} & Year when construction of the dam was completed. \\\hline
+\textbf{nidYearModified} & Year when the dam was last modified. \\\hline
+\textbf{nidHydrologicUnit} & Hydrologic Unit Code. \\\hline
+\textbf{nidRiver} & Name of the principal river or stream on which the dam is built. \\\hline
+\textbf{nidNearestCity} & Name of the nearest city or community. \\\hline
+\textbf{nidCongressionalDistrict} & Congressional district in which the dam is located. \\\hline
+\textbf{nidLongitude} & Longitude in decimal degrees at the dam location. \\\hline
+\textbf{nidLatitude} & Latitude in decimal degrees at the dam location. \\\hline
+\textbf{nidEmergencyActionPlanId} & Code value to indicate whether the dam has an Emergency Action Plan. \\\hline
+\textbf{nidEmergencyActionPlan} & Text description of whether the dam has an Emergency Action Plan. \\\hline
+\textbf{nidInspectionFrequencyId} & Code to indicate how often the dam is inspected. \\\hline
+\textbf{nidInspectionFrequency} & Description of how often the dam is inspected. \\\hline
+\textbf{nidInspectionDate} & Date of the most recent inspection. \\\hline
+\textbf{nidRegulatoryId} & Code for the regulatory agency responsible for dam safety oversight. \\\hline
+\textbf{nidRegulatory} & Text description of the regulatory agency responsible for dam safety oversight. \\\hline
+\textbf{nidFederalAgencyId} & Code for the federal agency involved with the dam. \\\hline
+\textbf{nidFederalAgency} & Name of the federal agency involved with the dam. \\\hline
+\textbf{nidMaxStorage} & Maximum storage at the dam, in acre feet. \\\hline
+\textbf{nidNormalStorage} & Normal storage at the dam, in acre feet. \\\hline
+\textbf{nidDrainageAreaMi2} & Drainage area in square miles. \\\hline
+\textbf{nidSurfaceAreaAcres} & Surface area of reservoir at normal storage, in acres. \\\hline
+\textbf{nidCrestElevationFt} & Crest elevation, in feet. \\\hline
+\textbf{nidCrestLengthFt} & Crest length, in feet. \\\hline
+\textbf{nidDamHeightFt} & Dam height, in feet. \\\hline
+\textbf{nidMaxDischargeCfs} & Maximum discharge in cubic feet per second. \\\hline
+\textbf{nidFoundationType} & Foundation type for the dam. \\\hline
+\textbf{nidSpillwayType} & Spillway type for the dam. \\\hline
+\textbf{nidOutletWorks} & Indicates if the dam has outlet works. \\\hline
+\textbf{nidConditionAssessment} & Overall condition assessment rating. \\\hline
+\textbf{nidConditionAssessmentDate} & Date of the most recent condition assessment. \\\hline
+\textbf{nidConditionAssessmentId} & Code for the condition assessment rating. \\\hline
+\textbf{nidCountyFips} & County FIPS code. \\\hline
+\textbf{nidStateKey} & Two letter abbreviation of the state. \\\hline
+\textbf{nidStateName} & State name. \\\hline
+\textbf{nidNation} & Country code. \\\hline
+\textbf{nidZipcode} & Postal code. \\\hline
+\textbf{nidHuc2} & Hydrologic Unit Code two digit region. \\\hline
+\textbf{nidHuc4} & Hydrologic Unit Code four digit subregion. \\\hline
+\textbf{nidHuc6} & Hydrologic Unit Code six digit basin. \\\hline
+\textbf{nidHuc8} & Hydrologic Unit Code eight digit subbasin. \\\hline
+\textbf{nidFemaRegion} & FEMA region where the dam is located. \\\hline
+\textbf{nidFemaCommunity} & Name of the community participant in the National Flood Insurance Program that is local to the dam. \\\hline
+\textbf{nidAiannh} & Name of recognized American Indian, Alaska Native, or Native Hawaiian community areas where applicable. \\\hline
+\textbf{nidEapLastExerciseDate} & Date of the most recent exercise of the Emergency Action Plan. \\\hline
+\textbf{nidEapLastExerciseType} & Type of the most recent Emergency Action Plan exercise. \\\hline
+\textbf{nidEapVerified} & Indicates if the Emergency Action Plan is verified. \\\hline
+\textbf{nidEapNextDueDate} & Date the next Emergency Action Plan exercise is due. \\\hline
+\textbf{nidEapSchedule} & Frequency schedule for Emergency Action Plan exercises. \\\hline
+\textbf{nidEapNotes} & Notes related to Emergency Action Plan. \\\hline
+\textbf{nidInspectionFrequencyNotes} & Notes related to inspection frequency. \\\hline
+\textbf{nidOwnerTypeId} & Code for owner type. \\\hline
+\textbf{nidRegulatoryAgencyId} & Code for the regulatory agency. \\\hline
+\textbf{nidPrimaryPurposeCode} & Code for the primary purpose. \\\hline
+\textbf{nidOtherPurposeCode} & Code for other purposes. \\\hline
+\textbf{nidOutletWorksId} & Code for the presence of outlet works. \\\hline
+\textbf{nidSpillwayTypeId} & Code for the spillway type. \\\hline
+\textbf{nidFoundationTypeId} & Code for the foundation type. \\\hline
+\textbf{nidConditionAssessmentCode} & Code for the overall condition assessment. \\\hline
+\textbf{nidEmergencyActionPlanCode} & Code for Emergency Action Plan status. \\\hline
+\textbf{nidInspectionFrequencyCode} & Code for inspection frequency. \\\hline
+\textbf{nidHazardCode} & Code for hazard potential classification. \\\hline
+\textbf{nidHazardText} & Text for hazard potential classification. \\\hline
+\textbf{nidSourceAgency} & The source agency that submitted the data. \\\hline
+\textbf{nidSubmittingAgency} & The agency that transmitted data to the NID. \\\hline
+\textbf{nidRecordStatus} & Indicates if the record is current or archived. \\\hline
+\textbf{nidDataLastUpdated} & Date of the most recent data update. \\\hline
+\textbf{nidUrl} & Link to the official NID entry for the dam. \\\hline
+\textbf{privateDamId} & Code to indicate whether a dam is a private dam. \\\hline
+\textbf{politicalPartyId} & Code for political party that currently holds the Congressional District seat the dam is located. \\\hline
+\textbf{huc2} & Hydrologic Unit Code (HUC) two digit region. \\\hline
+\textbf{huc4} & Hydrologic Unit Code (HUC) four digit subregion. \\\hline
+\textbf{huc6} & Hydrologic Unit Code (HUC) six digit basin. \\\hline
+\textbf{huc8} & Hydrologic Unit Code (HUC) eight digit subbasin. \\\hline
+\textbf{zipcode} & Post Office Zip Codes. \\\hline
+\textbf{nation} & Code for country where dam is located. \\\hline
+\textbf{stateKey} & Two letter abbreviation of the state where dam is located. \\\hline
+\textbf{femaRegion} & Federal Emergency Management Agency (FEMA) Region where dam is located. \\\hline
+\textbf{femaCommunity} & Name of community participant in the National Flood Insurance Program (NFIP) local to the dam. \\\hline
+\textbf{aiannh} & Name of recognized American Indian, Alaska Native, or Native Hawaiian community areas where applicable. \\\hline
+\end{longtable}
+
+\section{Dataset Preprocessing}
+All data preprocessing was done with python.
+
+\subsection{Data Injectivity Test}
+
+In this section, the dataset is examined to perform a \textit{data injectivity test} across all attributes. The purpose of this test is to identify attributes that contain redundant or functionally dependent information. Data injectivity refers to the property that the values of one attribute uniquely determine the values of another. Formally, for two attributes \( a_1 \) and \( a_2 \), the attribute \( a_2 \) is said to be \textit{injective with respect to} \( a_1 \) if and only if
+\[
+\forall\, \text{rows } r_i, r_j \hspace{1em} r_i[a_j] = r_j[a_j] \implies r_i[a_i] = r_j[a_i].
+\]
+This condition ensures that if two rows share the same value in attribute \( a_2 \), they must also share the same value in attribute \( a_1 \). 
+
+To conduct the data injectivity test, each attribute \( a_1 \) in the NTAD\_Dams dataset is compared pairwise with all other attributes \( a_2, a_3, \dots, a_n \). For every pair \((a_1, a_k)\), the analysis determines whether the values in \( a_k \) injectively map to those in \( a_1 \). If such a mapping exists, \( a_k \) is considered injective with respect to \( a_1 \), implying that one of the two attributes may be redundant or derivable from the other.
+
+Identifying injective relationships serves several key purposes:
+\begin{enumerate}
+    \item \textbf{Redundancy detection:} Reveals attributes that encode the same information in alternate forms, such as numerical identifiers and their corresponding textual labels.
+    \item \textbf{Functional dependence analysis:} Highlights attributes whose values are completely determined by other attributes, indicating dependency structures within the dataset.
+    \item \textbf{Dimensionality reduction:} Supports the removal of superfluous attributes without losing informational content, thereby simplifying the dataset for downstream modeling.
+\end{enumerate}
+
+For example, if both \texttt{longitude} and \texttt{x} yield identical groupings of records, then \texttt{longitude} is injective with respect to \texttt{x}. This indicates that the two attributes convey the same underlying information. Detecting such injective pairs is therefore an important preprocessing step that ensures data minimality, reduces redundancy, and improves the interpretability of the predictive model.
+
+\subsubsection{Results of the Data Injectivity Test}
+
+This section summarizes attribute pairs that exhibit injective or bijective relationships, along with the resulting keep or remove decisions taken to reduce redundancy while preserving informational content.
+
+\subsubsection*{Bijective relationships}
+
+\begin{itemize}
+    \item \textbf{0 (OBJECTID) and 1 (id) and 2 (federalId):} All three are mutually injective and therefore bijective. 
+    \begin{itemize}
+        \item \textit{Decision:} Keep 0 (OBJECTID). Remove 1 (id) and 2 (federalId).
+        \item \textit{Rationale:} These fields encode the same unique identifier so retaining one prevents loss of information. 
+    \end{itemize}
+\end{itemize}
+
+\subsubsection*{One way injective relationships}
+
+\begin{itemize}
+    \item \textbf{99 (x) injective with respect to 5 (longitude), and 100 (y) injective with respect to 4 (latitude):}
+    If two records share the same value in \texttt{x} then they share the same value in \texttt{longitude}, and similarly for \texttt{y} and \texttt{latitude}. The converse does not hold. This indicates that \texttt{x} and \texttt{y} are lower resolution or derived encodings of the primary coordinates.
+    \begin{itemize}
+        \item \textit{Decision:} Remove 99 (x) and 100 (y). Keep 5 (longitude) and 4 (latitude).
+        \item \textit{Rationale:} The latitude and longitude attributes admit more distinct values and therefore carry at least as much information.
+    \end{itemize}
+
+    \item \textbf{Hydrologic Unit Codes 89 (huc2), 90 (huc4), 91 (huc6), and 92 (huc8):}
+    In practice, a given value of \texttt{huc8} uniquely determines the corresponding values of \texttt{huc6}, \texttt{huc4}, and \texttt{huc2}. Thus equality on \texttt{huc8} implies equality on the coarser codes. Your empirical test found consistent injectivity in this direction.
+    \begin{itemize}
+        \item \textit{Decision:} Keep 89 (huc2). Remove 90 (huc4), 91 (huc6), and 92 (huc8) for the nominal feature set.
+        \item \textit{Rationale:} \texttt{huc4}, \texttt{huc6}, and \texttt{huc8} have very high cardinality which can complicate nominal modeling without regularization or target encoding. Retaining \texttt{huc2} preserves basin level signal with manageable cardinality.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection*{Attributes with no detected injective ties}
+
+\begin{itemize}
+    \item \textbf{71 (secondaryLengthOfLocks)} and \textbf{73 (secondaryWidthOfLocks):}
+    No clear injective relationships to other attributes were detected.
+    \item \textbf{88 (politicalPartyId):} No injective connection to safety or structural attributes.
+    \item \textbf{94 (nation):} No injective connection observed.
+  
+\end{itemize}
+
+\subsection{Deleting Irregular Rows}
+\begin{itemize}
+    \item \textit{Row 39881} was deleted because the values along the row did not match up the attributes
+\end{itemize}
+
+\subsection{Working with Weka}
+This project used both weka and python. For the dataset to be imported to weka, all entries with quotations and special characters ( \verb|\n| and \verb|\r| ) had to replaced with whitespace. 
+
+\subsection{Unreasonable Attributes}
+
+Several attributes in the NTAD\_Dams dataset were deemed \textit{unreasonable} for inclusion in the predictive modeling process. These attributes were removed because they exhibit one or more of the following characteristics:
+\begin{enumerate}
+    \item Extremely high nominal cardinality, often functioning as unique identifiers rather than informative predictors.
+    \item Irregular or incomplete categorical coverage, meaning that new dams may contain values not represented in the training dataset (out-of-vocabulary risk).
+    \item Administrative or textual metadata unrelated to structural, locational, or hazard-relevant properties.
+\end{enumerate}
+
+\subsubsection*{Removed Attributes and Justification}
+
+\begin{itemize}
+    \item \textbf{OBJECTID:} Nominal attribute with 92,522 distinct values. Serves purely as a unique identifier with no predictive value.
+    \item \textbf{Name:} Nominal attribute with 77,595 distinct values. Each dam name is unique, making it unsuitable for learning generalizable patterns.
+    \item \textbf{ownerNames:} Nominal attribute with 53,818 distinct values. High variability and inconsistent naming conventions; unlikely to generalize to unseen ownership entities.
+    \item \textbf{nidId:} Nominal attribute with 91,776 distinct values. Duplicates the role of \texttt{OBJECTID} and offers no additional information.
+    \item \textbf{designerNames:} Nominal attribute with 6,545 distinct values. Sparse and unstandardized, often containing non-repeating free-text entries.
+    \item \textbf{sourceAgency:} Nominal attribute indicating the submitting organization. Removed because the set of possible agencies is incomplete; a new submission source would not be represented in the training list.
+    \item \textbf{stateFedId:} Nominal attribute with 62,050 distinct values. Serves as an administrative identifier, not a predictive feature.
+    \item \textbf{County:} Nominal attribute with partial categorical coverage. If a new dam is located in a county not represented in the dataset, the model cannot assign a valid category, leading to generalization errors.
+    \item \textbf{countyState:} Nominal attribute combining county and state. Suffers from the same generalization issue when unseen geographic combinations appear.
+    \item \textbf{City:} Nominal attribute with irregular coverage. Cities absent from the training data would produce unseen categorical values at inference time.
+    \item \textbf{riverName:} Nominal attribute representing river or stream names. High cardinality and inconsistent naming patterns (e.g., abbreviations, alternative spellings) make it unstable for modeling. New rivers would also be unrepresented.
+    \item \textbf{congDist:} Nominal attribute for congressional districts. The mapping changes periodically due to redistricting; unseen districts would not map cleanly to the existing training categories.
+    \item \textbf{stateRegulatoryAgency:} Nominal attribute with irregular text entries. Agencies not listed in the dataset would appear as unknown classes, making the attribute unreliable.
+    \item \textbf{Zipcode:} Nominal attribute with 16,794 distinct values. Sparse, inconsistent, and region-specific; also prone to out-of-range inputs for new locations.
+    \item \textbf{dateUpdated, inspectionDate, conditionAssessDate, yearCompleteId, yearCompletedId:} Nominal or date-like text attributes with nonstandard formats and missing values. New dams or future updates would produce values not observed in the training data.
+    \item \textbf{inspectionFrequency:} Not suitable as a predictor because the inspection frequency depends on administrative policy, dam age, and regulatory jurisdiction rather than physical or hazard-related factors.
+    \item \textbf{websiteUrl:} Nominal attribute containing web links. Not predictive and subject to missing or malformed URLs.
+    \item \textbf{usaceDivision, usaceDistrict, femaCommunity:} Nominal administrative fields. Incomplete coverage and inconsistent naming conventions; new districts or communities would produce unrecognized categories.
+    \item \textbf{Nation:} Removed because all records belong to the United States. Other detected values were irregular or erroneous.
+    \item \textbf{stateKey:} Redundant with the existing \texttt{state} attribute.
+    \item \textbf{outletGateTypes:} Deleted because of the abundent number of irregular values not listed in documentation. e.g \verb|Slide (slice gate)6|, \verb|Valve1|, Roller2 were never mentioned in documentation
+\end{itemize}
+
+\subsubsection*{Rationale for Exclusion}
+
+These attributes were excluded to prevent high-cardinality nominal features from overfitting the model and to avoid \textit{out-of-vocabulary errors}, where a categorical value encountered during inference does not exist in the training set. Removing such fields improves model generalization, simplifies feature encoding, and ensures that retained attributes represent interpretable, stable, and domain-relevant information.
+
+\subsection{Missing Values (Column-Wise Analysis)}
+Attributes where 70\% or more instances do not have said attribute are removed as high rates of missingness prevent us from reliably replacing those missing values. 
+
+\begin{itemize}
+    \item \textbf{otherNames:} 72\% of entries missing.
+    \item \textbf{formerNames:} 89\% of entries missing.
+    \item \textbf{otherStructureId:} 99\% of entries missing.
+    \item \textbf{fedOwnerIds:} 97\% of entries missing.
+    \item \textbf{fedFundingIds:} 85\% of entries missing.
+    \item \textbf{fedDesignIds:} 71\% of entries missing.
+    \item \textbf{fedConstructionIds:} 85\% of entries missing.
+    \item \textbf{fedRegulatoryIds:} 95\% of entries missing.
+    \item \textbf{fedInspectionIds:} 82\% of entries missing.
+    \item \textbf{fedOperationIds:} 97\% of entries missing.
+    \item \textbf{fedOtherIds:} 99\% of entries missing.
+    \item \textbf{yearModified:} 93\% of entries missing.
+    \item \textbf{secondaryLengthOfLocks:} 100\% of entries missing.
+    \item \textbf{secondaryWidthOfLocks:} 100\% of entries missing.
+    \item \textbf{eapLastRevDate:} 81\% of entries missing.
+    \item \textbf{operationalStatusId:} 81\% of entries missing.
+    \item \textbf{operationalStatusDate:} 82\% of entries missing.
+    \item \textbf{lastEapExcerDate:} 99\% of entries missing.
+    \item \textbf{politicalPartyId:} 100\% of entries missing.
+    \item \textbf{aiannh:} 94\% of entries missing.
+\end{itemize}
+
+\subsection{Missing Values (Row-Wise Analysis)}
+
+In addition to column-wise missingness, a row-level completeness check was performed to identify individual records with excessive missing data. Any record containing missing values for 70\% or more were removed. 
+
+\begin{itemize}
+    \item \textbf{Row 39880:} Contained missing values in over 70\% of all attributes.
+\end{itemize}
+
+\subsection{Changing Datatypes}
+
+\subsubsection{Converted String Attributes}
+
+Some of the attributes when imported to Weka was identified as the string datatype. These attributes had to be converted to either numeric or nominal to be able to use attribute selection algorithms. 
+
+\begin{itemize}
+    \item \textbf{Latitude:} Converted from \texttt{string} to \texttt{numeric}.
+    \item \textbf{Longitude:} Converted from \texttt{string} to \texttt{numeric}.
+    \item \textbf{primaryPurposeId:} Converted from \texttt{string} to \texttt{nominal}.
+    \item \textbf{nidHeight:} Converted from \texttt{string} to \texttt{numeric}.
+    \item \textbf{eapId:} Converted from \texttt{string} to \texttt{nominal}.
+    \item \textbf{ownerTypeIds:} Converted from \texttt{string} to \texttt{nominal}.
+    \item \textbf{nonFederalDamOnFederalId:} Converted from \texttt{string} to \texttt{nominal}.
+    \item \textbf{Distance:} Converted from \texttt{string} to \texttt{numeric}.
+    \item \textbf{fedRegulateId:} Converted from \texttt{string} to \texttt{nominal}.
+    \item \textbf{jurisdictionAuthorityId:} Converted from \texttt{string} to \texttt{nominal}.
+\end{itemize}
+
+
+\subsubsection{One-Hot Encoding}
+
+Some attributes had possible values separated by semi colons e.g a value of foundationTypeIds could be 1;2 which means it has category 1 and 2. For these kinds of attributes, one-hot encoding has to be done. 
+
+\begin{itemize}
+    \item \textbf{ownerTypeIds:} Encoded across 12 categories \([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]\).
+    \item \textbf{purposeIds:} Encoded across 6 categories \([1, 2, 3, 4, 5, 6]\).
+    \item \textbf{damTypeIds:} Encoded across 12 categories \([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]\).
+    \item \textbf{coreTypeIds:} Encoded across 6 categories \([1, 2, 3, 4, 5, 6]\).
+    \item \textbf{foundationTypeIds:} Encoded across 4 categories \([1, 2, 3, 4]\).
+\end{itemize}
+
+As a result of encoding, we will delete the parent attribute and replace it with many attributes which represent the encoding e.g attribute \textit{purposeIds} of just 1 would be \textit{purposeIds\_\_1}
+
+\subsection{Dealing with Missing Values (Class)}
+All instances had a value for the class \textit{hazardId}. Therefore, no instance had to be removed due to missing class attribute.
+
+\subsection{Dealing with Missing Values (Continuous, Nominal, Discrete)}
+\begin{itemize}
+    \item Missing value for \textbf{continuous data} was replaced using \textit{mean}
+    \item Missing values for \textbf{nominal data} was replaced using \textit{mode}
+    \item Missing values for \textbf{discrete data} was replaced using \textit{median}
+\end{itemize}
+
+\subsection{Obvious Attributes}
+
+Some attributes were removed from the dataset because they were found to be closely related to the target variable \texttt{hazardId}. Although these attributes are not identical to \texttt{hazardId}, they share strong conceptual and statistical relationships with it. Retaining them could introduce partial data leakage, leading the model to rely on correlated administrative indicators rather than independent structural or environmental factors.
+
+\begin{itemize}
+    \item \textbf{eapId:} Represents the Emergency Action Plan (EAP) classification for each dam. Since EAPs are typically implemented or updated in proportion to the dam’s hazard level, this attribute tends to correlate strongly with \texttt{hazardId}. Its inclusion could cause the model to infer hazard indirectly through administrative preparedness rather than physical risk indicators.
+    \item \textbf{conditionAssessId:} Encodes the dam’s latest condition assessment category. While not identical to hazard classification, this attribute reflects similar evaluative criteria—dams with poorer condition ratings often exhibit higher hazard potential. Retaining this attribute could therefore inflate the model’s predictive accuracy by exploiting overlapping information.
+\end{itemize}
+
+\subsubsection*{Rationale for Removal}
+
+Although neither attribute is a direct duplicate of \texttt{hazardId}, both exhibit strong conceptual and empirical relationships with it. Removing them ensures that the predictive model focuses on independent explanatory variables, such as structural, environmental, and locational attributes, rather than correlated administrative assessments. This step reduces redundancy, improves model generalization, and prevents subtle forms of data leakage.
+
+\subsection{Data Discretization}
+Numeric data needed to be discretized in order to use certain classification algorithms. Discretization was done using the \textit{equal frequency binning} method. The number of bins was determined based on how many distinct values the numeric attribute had:
+\begin{itemize}
+    \item \texttt{latitude} had \textbf{86,308} unique values and was binned into \textbf{1,000} bins.
+    \item \texttt{longitude} had \textbf{88,035} unique values and was binned into \textbf{1,000} bins.
+    \item \texttt{nidHeight} had \textbf{384} unique values and was binned into \textbf{50} bins.
+    \item \texttt{separateStructuresCount} had \textbf{15} unique values and was binned into \textbf{10} bins.
+    \item \texttt{distance} had \textbf{458} unique values and was binned into \textbf{50} bins.
+    \item \texttt{damHeight} had \textbf{373} unique values and was binned into \textbf{50} bins.
+    \item \texttt{hydraulicHeight} had \textbf{325} unique values and was binned into \textbf{50} bins.
+    \item \texttt{structuralHeight} had \textbf{346} unique values and was binned into \textbf{50} bins.
+    \item \texttt{damLength} had \textbf{4,267} unique values and was binned into \textbf{100} bins.
+    \item \texttt{volume} had \textbf{15,120} unique values and was binned into \textbf{100} bins.
+    \item \texttt{nidStorage} had \textbf{11,248} unique values and was binned into \textbf{100} bins.
+    \item \texttt{maxStorage} had \textbf{11,045} unique values and was binned into \textbf{100} bins.
+    \item \texttt{normalStorage} had \textbf{7,690} unique values and was binned into \textbf{100} bins.
+    \item \texttt{surfaceArea} had \textbf{4,672} unique values and was binned into \textbf{100} bins.
+    \item \texttt{drainageArea} had \textbf{4,880} unique values and was binned into \textbf{100} bins.
+    \item \texttt{maxDischarge} had \textbf{8,049} unique values and was binned into \textbf{100} bins.
+    \item \texttt{spillwayWidth} had \textbf{1,455} unique values and was binned into \textbf{100} bins.
+    \item \texttt{numberOfLocks} had \textbf{11} unique values and was binned into \textbf{10} bins.
+    \item \texttt{lengthOfLocks} had \textbf{38} unique values and was binned into \textbf{10} bins.
+    \item \texttt{widthOfLocks} had \textbf{22} unique values and was binned into \textbf{10} bins.
+\end{itemize}
+
+
+
+\section{Attribute Selection}
+
+Attribute selection aims to reduce the number of input variables while retaining the most relevant information for prediction. 
+By removing redundant or irrelevant attributes, the resulting models are simpler, faster, and often more accurate. 
+In this project, four evaluation methods were applied in Weka: \textit{CfsSubsetEval}, \textit{CorrelationAttributeEval}, \textit{GainRatioAttributeEval}, and \textit{InfoGainAttributeEval}. 
+Each method ranks or selects attributes based on different statistical criteria.
+
+\subsection{CfsSubsetEval}
+\textit{CfsSubsetEval} (Correlation-based Feature Selection) evaluates subsets of attributes rather than individual ones. 
+It selects groups of features that are highly correlated with the class but have low intercorrelation with each other. 
+This helps eliminate redundant attributes that provide overlapping information, improving the model’s generalization and reducing overfitting.
+
+From the Weka outputs in Appendix~\ref{app:CfsSubsetEval weka outputs}, we get the chosen attributes to be:
+\begin{multicols}{2}
+    \begin{itemize}
+        \item primaryPurposeId
+        \item ownerTypeIds\_\_6
+        \item primaryOwnerTypeId
+        \item purposeIds\_\_8
+        \item purposeIds\_\_10
+        \item state
+        \item foundationTypeIds\_\_1
+        \item damHeight
+        \item nidHeightId
+        \item volume
+        \item nidStorage
+        \item normalStorage
+        \item maxDischarge
+        \item huc2
+        \item femaRegion
+    \end{itemize}
+\end{multicols}
+
+\subsection{CorrelationAttributeEval}
+\textit{CorrelationAttributeEval} evaluates each attribute individually by measuring its correlation with the target class. 
+A high correlation indicates that the attribute is strongly predictive of the class label. 
+Attributes with low correlation values contribute less useful information and can be removed to simplify the model.
+
+Setting the threshold to 0.1 from the Weka outputs in Appendix~\ref{app:CorrelationAttributeEval weka outputs}, we get:
+\begin{multicols}{2}
+    \begin{itemize}
+        \item purposeIds\_\_10
+        \item ownerTypeIds\_\_1
+        \item foundationTypeIds\_\_1
+        \item purposeIds\_\_8
+        \item stateRegulatedId
+        \item primaryOwnerTypeId
+        \item purposeIds\_\_5
+        \item fedRegulatedId
+        \item ownerTypeIds\_\_5
+        \item permittingAuthorityId
+        \item enforcementAuthorityId
+        \item femaRegion
+        \item foundationTypeIds\_\_3
+    \end{itemize}
+\end{multicols}
+
+\subsection{GainRatioAttributeEval}
+\textit{GainRatioAttributeEval} is based on information theory and evaluates attributes using the Gain Ratio metric. 
+It measures how much information about the class is gained by knowing the value of an attribute, normalized to prevent bias toward attributes with many distinct values. 
+This method is particularly effective for categorical data and is commonly used in decision tree algorithms.
+
+Setting the threshold to 0.08 from the Weka outputs in Appendix~\ref{app:GainRatioAttributeEval weka outputs}, we get:
+\begin{multicols}{2}
+    \begin{itemize}
+        \item ownerTypeIds\_\_6
+        \item foundationTypeIds\_\_2
+        \item damTypeIds\_\_4
+        \item widthOfLocks
+        \item lengthOfLocks
+        \item damTypeIds\_\_1
+        \item isAssociatedStructureId
+        \item foundationTypeIds\_\_1
+        \item coreTypeIds\_\_1
+        \item damTypeIds\_\_7
+        \item purposeIds\_\_3
+    \end{itemize}
+\end{multicols}
+
+\subsection{InfoGainAttributeEval}
+\textit{InfoGainAttributeEval} (Information Gain) evaluates each attribute individually by calculating how much it reduces the uncertainty (entropy) of the class. 
+Attributes that provide greater information gain are considered more useful for predicting the target variable. 
+Unlike Gain Ratio, it does not normalize the result, so attributes with many unique values may receive higher scores.
+
+Setting the threshold to 0.08 from the Weka outputs in Appendix~\ref{app:InfoGainAttributeEval weka outputs}, we get:
+\begin{multicols}{2}
+    \begin{itemize}
+        \item state
+        \item longitude
+        \item huc2
+        \item nidStorage
+        \item maxStorage
+        \item femaRegion
+        \item latitude
+        \item damHeight
+        \item normalStorage
+        \item nidHeight
+        \item primaryPurposeId
+        \item hydraulicHeight
+        \item nidHeightId
+        \item structuralHeight
+        \item volume
+        \item maxDischarge
+    \end{itemize}
+\end{multicols}
+
+    
+
+
+\subsection{SelfSelected}
+
+\begin{multicols}{2}
+    \begin{itemize}
+        \item primaryPurposeId
+        \item damHeight
+        \item state
+        \item surfaceArea
+        \item damLength
+        \item volume
+    \end{itemize}
+\end{multicols}
+
+
+\section{Model Selection}
+
+\subsection{OneR}
+The \textit{OneR} (One Rule) algorithm builds a simple rule-based model that uses only a single attribute to make predictions. 
+It evaluates each attribute individually and selects the one that yields the lowest error rate. 
+Although simple, OneR often provides a good baseline and highlights which individual feature is most predictive.
+
+\subsection{Naive Bayes}
+\textit{Naive Bayes} is a probabilistic classifier based on Bayes’ Theorem, assuming that all attributes are independent given the class label. 
+It calculates the probability of each class for a given instance and predicts the class with the highest probability. 
+It is efficient and works well even with relatively small datasets.
+
+\subsection{J48}
+\textit{J48} is Weka’s implementation of the C4.5 decision tree algorithm. 
+It recursively splits data based on attributes that provide the highest information gain, forming a tree where each path represents a classification rule. 
+It handles both categorical and numerical data and includes pruning to prevent overfitting.
+
+\subsection{BayesNet}
+\textit{BayesNet} (Bayesian Network) is a graphical probabilistic model that represents dependencies between attributes using a directed acyclic graph. 
+Unlike Naive Bayes, it learns conditional dependencies among variables, allowing it to capture more complex relationships in the data while still producing probabilistic predictions.
+
+\subsection{Models}
+The following are all the models used for this study in the format of
+
+\verb|[Classification model] + [Attribute Selection Method]|
+
+\begin{itemize}
+    \item OneR
+    \begin{itemize}
+        \item OneR + CfsSubsetEval
+        \item OneR + CorrelationAttributeEval
+        \item OneR + GainRatioAttributeEval
+        \item OneR + InfoGainAttributeEval
+        \item OneR + SelfSelected
+    \end{itemize}
+
+    \item NaiveBayes
+    \begin{itemize}
+        \item NaiveBayes + CfsSubsetEval
+        \item NaiveBayes + CorrelationAttributeEval
+        \item NaiveBayes + GainRatioAttributeEval
+        \item NaiveBayes + InfoGainAttributeEval
+        \item NaiveBayes + SelfSelected
+    \end{itemize}
+
+    \item J48
+    \begin{itemize}
+        \item J48 + CfsSubsetEval
+        \item J48 + CorrelationAttributeEval
+        \item J48 + GainRatioAttributeEval
+        \item J48 + InfoGainAttributeEval
+        \item J48 + SelfSelected
+    \end{itemize}
+
+    \item BayesNet
+    \begin{itemize}
+        \item BayesNet + CfsSubsetEval
+        \item BayesNet + CorrelationAttributeEval
+        \item BayesNet + GainRatioAttributeEval
+        \item BayesNet + InfoGainAttributeEval
+        \item BayesNet + SelfSelected
+    \end{itemize}
+\end{itemize}
+
+The summary results of each model from weka can be found in Appendix~\ref{app:Model Selection (Weka Outputs)}.
+
+\section{Results}
+
+Aggregating results from Appendix~\ref{app:Model Selection (Weka Outputs)}, we get the following tables. 
+
+% Accuracy
+\begin{table}[H]
+    \centering
+    \caption{Training Accuracy Comparison Across Models}
+    \label{tab:train-acc}
+    \begin{tabular}{lccccc}
+    \hline
+    \textbf{Classifier} & CfsSubsetEval & Correlation & GainRatio & InfoGain & SelfSelected \\
+    \hline
+    BayesNet   & 65.17 & 65.15 & 67.47 & 65.47 & 68.04 \\
+    J48        & 78.62 & 71.71 & 67.53 & 76.79 & 74.84 \\
+    NaiveBayes & 65.19 & 65.15 & 67.47 & 65.26 & 68.08 \\
+    OneR       & 70.46 & 66.17 & 66.17 & 70.46 & 70.46 \\
+    \hline
+    \end{tabular}
+    \end{table}
+    
+    % Accuracy
+    \begin{table}[H]
+    \centering
+    \caption{Testing Accuracy Comparison Across Models}
+    \label{tab:test-acc}
+    \begin{tabular}{lccccc}
+    \hline
+    \textbf{Classifier} & CfsSubsetEval & Correlation & GainRatio & InfoGain & SelfSelected \\
+    \hline
+    BayesNet   & 65.13 & 64.65 & 66.88 & 65.03 & 67.90 \\
+    J48        & 75.75 & 70.37 & 66.95 & 74.15 & 72.97 \\
+    NaiveBayes & 65.15 & 64.65 & 66.88 & 64.95 & 67.97 \\
+    OneR       & 70.54 & 65.87 & 65.87 & 70.54 & 70.54 \\
+    \hline
+    \end{tabular}
+    \end{table}
+    
+    % TP Rate
+    \begin{table}[H]
+    \centering
+    \caption{Testing TP Rate Comparison Across Models}
+    \label{tab:test-tp}
+    \begin{tabular}{lccccc}
+    \hline
+    \textbf{Classifier} & CfsSubsetEval & Correlation & GainRatio & InfoGain & SelfSelected \\
+    \hline
+    BayesNet   & 0.651 & 0.647 & 0.669 & 0.650 & 0.679 \\
+    J48        & 0.757 & 0.704 & 0.669 & 0.742 & 0.730 \\
+    NaiveBayes & 0.651 & 0.647 & 0.669 & 0.650 & 0.680 \\
+    OneR       & 0.705 & 0.659 & 0.659 & 0.705 & 0.705 \\
+    \hline
+    \end{tabular}
+    \end{table}
+    
+    % FP Rate
+    \begin{table}[H]
+    \centering
+    \caption{Testing FP Rate Comparison Across Models}
+    \label{tab:test-fp}
+    \begin{tabular}{lccccc}
+    \hline
+    \textbf{Classifier} & CfsSubsetEval & Correlation & GainRatio & InfoGain & SelfSelected \\
+    \hline
+    BayesNet   & 0.190 & 0.333 & 0.543 & 0.188 & 0.252 \\
+    J48        & 0.305 & 0.382 & 0.544 & 0.330 & 0.358 \\
+    NaiveBayes & 0.190 & 0.333 & 0.543 & 0.187 & 0.252 \\
+    OneR       & 0.394 & 0.593 & 0.593 & 0.394 & 0.394 \\
+    \hline
+    \end{tabular}
+    \end{table}
+    
+    % ROC Area
+    \begin{table}[H]
+    \centering
+    \caption{Testing ROC Area Comparison Across Models}
+    \label{tab:test-roc}
+    \begin{tabular}{lccccc}
+    \hline
+    \textbf{Classifier} & CfsSubsetEval & Correlation & GainRatio & InfoGain & SelfSelected \\
+    \hline
+    BayesNet   & 0.835 & 0.757 & 0.567 & 0.832 & 0.824 \\
+    J48        & 0.841 & 0.787 & 0.567 & 0.819 & 0.810 \\
+    NaiveBayes & 0.835 & 0.757 & 0.567 & 0.832 & 0.824 \\
+    OneR       & 0.656 & 0.533 & 0.533 & 0.656 & 0.656 \\
+    \hline
+    \end{tabular}
+    \end{table}
+
+\subsection{Overfitting and Underfitting}
+Analyzing Table~\ref{tab:train-acc} and Table~\ref{tab:test-acc}, we do not see any clear signs of overfitting. 
+Generally, it appears to be the case that models with higher training data also have higher testing accuracy, which is a sign against overfitting. 
+In addition, none of the training accuracies are signifcantly high (over 90\%).
+Looking at the relatively low accuracies ($<= 70\%$) of models using \textit{BayesNet}, \textit{NaiveBayes} , and \textit{OneR} classifiers, we see some signs of underfitting. 
+The only classifier whose models' are performing well in terms of accuracy seems to be \textit{J48} classifier models.
+
+\subsection{TP,FP Rates, and ROC}
+From Table~\ref{tab:test-tp} we see that the best performing model is \textit{J48+CfsSubsetEval}. 
+In addition, we also see that \textit{J48} performed better across all attribute selection algorithms in contrast to other classification methods. 
+The high performence of \textit{J48} is further supported by Table~\ref{tab:test-roc} as models with \textit{J48} has some of the highest performences (except for \textit{J48+GainRatio}). 
+However, one downside of \textit{J48} we see in Table~\ref{tab:test-fp} is that \textit{J48} models seem to have higher FPR rates when compared to \textit{BayesNet} and \textit{NaiveBayes}. 
+Looking further into the performence of \textit{J48+CfsSubsetEval}, our best model yet, in Appendix~\ref{app:J48 + CfsSubsetEval weka outputs}, we see that the FPR rate of \verb|val_1| in both training and testing were the lowest. 
+In addition, observing the confusion matrix for \verb|val_2|, the attribute with the highest FPR, we see that most instances with label \verb|val_2| are being classified correctly or being classified as \verb|val_3| or \verb|val_4|. 
+Referring back to the definition of \textit{hazardId} in Section~\ref{sec:Description of Dataset}, this means \verb|val_2|, the lowest hazard potential, is mostly being categorized as low hazard potential or of higher hazard potential. 
+Since low hazards are being predicted mostly as low hazards or higher hazards, the high FPR rate is not a significant detriment to the model, as it is better to be cautious by predicting as higher than predicting as lower. 
+
+\section{Discussion and Conclusion}
+In conclusion, the best-performing model was \textit{J48+CfsSubsetEval}. 
+This model achieved the highest training and testing accuracy, along with strong true positive (TPR) and ROC values. 
+Although it exhibited a relatively high false positive rate (FPR), its tendency to overpredict higher hazard levels is acceptable for this context, as it is safer to flag potential hazards than to overlook them. 
+Overall, the model balanced accuracy, generalization, and interpretability effectively, making it well-suited for identifying hazard risk levels.
+
+Working independently on this project has taught me how to organize and manage a complete machine learning workflow from data preprocessing to model evaluation. 
+I became more comfortable using Weka and learned how different feature selection methods and classification algorithms affect model performance. 
+I also gained practical experience interpreting machine learning metrics such as confusion matrices, precision, recall, TP and FP rates, and ROC curves. 
+Understanding these metrics helped me evaluate not just how accurate a model was, but how reliable and sensitive it was to detecting the correct hazard categories. 
+Through this project, I learned how to analyze results critically and make informed decisions about model quality and suitability for real-world applications.
+
+
+
+\nocite{*}
+
+\bibliographystyle{apacite}
+\bibliography{references}
+
+\section{Appendix}
+\appendix
+
+\section{Attribute Selection (Weka Outputs)}\label{Attribute Selection (Weka Outputs)}
+
+\subsection{CfsSubsetEval}\label{app:CfsSubsetEval weka outputs}
+\lstinputlisting{AttributeSelection/BestFirst+CfsSubsetEval.txt}
+
+\subsection{CorrelationAttributeEval}\label{app:CorrelationAttributeEval weka outputs}
+\lstinputlisting{AttributeSelection/Ranker+CorrelationAttributeEval.txt}
+
+\subsection{GainRatioAttributeEval}\label{app:GainRatioAttributeEval weka outputs}
+\lstinputlisting{AttributeSelection/Ranker+GainRatioAttributeEval.txt}
+
+\subsection{InfoGainAttributeEval}\label{app:InfoGainAttributeEval weka outputs}
+\lstinputlisting{AttributeSelection/Ranker+InfoGainAttributeEval.txt}
+
+
+\section{Model Selection (Weka Outputs)}\label{app:Model Selection (Weka Outputs)}
+
+\subsection{OneR}
+\subsubsection{OneR + CfsSubsetEval}\label{app:OneR + CfsSubsetEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/OneR + CfsSubsetEval.txt}
+Testing: 
+\lstinputlisting{ModelSelection_Test/OneR+CfsSubsetEval.txt}
+
+\subsubsection{OneR + CorrelationAttributeEval}\label{app:OneR + CorrelationAttributeEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/OneR + CorrelationAttributeEval.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/OneR+CorrelationAttributeEval.txt}
+
+\subsubsection{OneR + GainRatioAttributeEval}\label{app:OneR + GainRatioAttributeEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/OneR + GainRatioAttributeEval.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/OneR+GainRatioAttributeEval.txt}
+
+\subsubsection{OneR + InfoGainAttributeEval}\label{app:OneR + InfoGainAttributeEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/OneR + InfoGainAttributeEval.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/OneR+InfoGainAttributeEval.txt}
+
+\subsubsection{OneR + SelfSelected}\label{app:OneR + SelfSelected weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/OneR + SelfSelected.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/OneR+SelfSelected.txt}
+
+\subsection{NaiveBayes}
+
+\subsubsection{NaiveBayes + CfsSubsetEval}\label{app:NaiveBayes + CfsSubsetEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/NaiveBayes + CfsSubsetEval.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/NaiveBayes+CfsSubsetEval.txt}
+
+\subsubsection{NaiveBayes + CorrelationAttributeEval}\label{app:NaiveBayes + CorrelationAttributeEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/NaiveBayes + CorrelationAttributeEval.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/NaiveBayes+CorrelationAttributeEval.txt}
+
+\subsubsection{NaiveBayes + GainRatioAttributeEval}\label{app:NaiveBayes + GainRatioAttributeEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/NaiveBayes + GainRatioAttributeEval.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/NaiveBayes+GainRatioAttributeEval.txt}
+
+\subsubsection{NaiveBayes + InfoGainAttributeEval}\label{app:NaiveBayes + InfoGainAttributeEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/NaiveBayes + InfoGainAttributeEval.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/NaiveBayes+InfoGainAttributeEval.txt}
+
+\subsubsection{NaiveBayes + SelfSelected}\label{app:NaiveBayes + SelfSelected weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/NaiveBayes + SelfSelected.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/NaiveBayes+SelfSelected.txt}
+
+\subsection{J48}
+
+\subsubsection{J48 + CfsSubsetEval}\label{app:J48 + CfsSubsetEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/J48 + CfsSubsetEval.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/J48+CfsSubsetEval.txt}
+
+\subsubsection{J48 + CorrelationAttributeEval}\label{app:J48 + CorrelationAttributeEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/J48 + CorrelationAttributeEval.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/J48+CorrelationAttributeEval.txt}
+
+\subsubsection{J48 + GainRatioAttributeEval}\label{app:J48 + GainRatioAttributeEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/J48 + GainRatioAttributeEval.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/J48+GainRatioAttributeEval.txt}
+
+\subsubsection{J48 + InfoGainAttributeEval}\label{app:J48 + InfoGainAttributeEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/J48 + InfoGainAttributeEval.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/J48+InfoGainAttributeEval.txt}
+
+\subsubsection{J48 + SelfSelected}\label{app:J48 + SelfSelected weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/J48 + SelfSelected.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/J48+SelfSelected.txt}
+
+\subsection{BayesNet}
+
+\subsubsection{BayesNet + CfsSubsetEval}\label{app:BayesNet + CfsSubsetEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/BayesNet + CfsSubsetEval.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/BayesNet+CfsSubsetEval.txt}
+
+\subsubsection{BayesNet + CorrelationAttributeEval}\label{app:BayesNet + CorrelationAttributeEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/BayesNet + CorrelationAttributeEval.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/BayesNet+CorrelationAttributeEval.txt}
+
+\subsubsection{BayesNet + GainRatioAttributeEval}\label{app:BayesNet + GainRatioAttributeEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/BayesNet + GainRatioAttributeEval.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/BayesNet+GainRatioAttributeEval.txt}
+
+\subsubsection{BayesNet + InfoGainAttributeEval}\label{app:BayesNet + InfoGainAttributeEval weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/BayesNet + InfoGainAttributeEval.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/BayesNet+InfoGainAttributeEval.txt}
+
+\subsubsection{BayesNet + SelfSelected}\label{app:BayesNet + SelfSelected weka outputs}
+Training:
+\lstinputlisting{ModelSelection_Train/BayesNet + SelfSelected.txt}
+Testing:
+\lstinputlisting{ModelSelection_Test/BayesNet+SelfSelected.txt}
+
+
+\end{document}

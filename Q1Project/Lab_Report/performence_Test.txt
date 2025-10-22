@@ -1,0 +1,24 @@
+📂 Scanning folder: /home/devin/Code/TJHSST-ML/Q1Project/Lab_Report/ModelSelection
+
+File                                     | Accuracy   | TP Rate  | FP Rate  | ROC Area
+-------------------------------------------------------------------------------------
+BayesNet+CfsSubsetEval.txt               | 65.1265    | 0.651    | 0.190    | 0.835
+BayesNet+CorrelationAttributeEval.txt    | 64.6509    | 0.647    | 0.333    | 0.757
+BayesNet+GainRatioAttributeEval.txt      | 66.8774    | 0.669    | 0.543    | 0.567
+BayesNet+InfoGainAttributeEval.txt       | 65.0346    | 0.650    | 0.188    | 0.832
+BayesNet+SelfSelected.txt                | 67.8988    | 0.679    | 0.252    | 0.824
+J48+CfsSubsetEval.txt                    | 75.7458    | 0.757    | 0.305    | 0.841
+J48+CorrelationAttributeEval.txt         | 70.3740    | 0.704    | 0.382    | 0.787
+J48+GainRatioAttributeEval.txt           | 66.9477    | 0.669    | 0.544    | 0.567
+J48+InfoGainAttributeEval.txt            | 74.1515    | 0.742    | 0.330    | 0.819
+J48+SelfSelected.txt                     | 72.9680    | 0.730    | 0.358    | 0.810
+NaiveBayes+CfsSubsetEval.txt             | 65.1481    | 0.651    | 0.190    | 0.835
+NaiveBayes+CorrelationAttributeEval.txt  | 64.6509    | 0.647    | 0.333    | 0.757
+NaiveBayes+GainRatioAttributeEval.txt    | 66.8774    | 0.669    | 0.543    | 0.567
+NaiveBayes+InfoGainAttributeEval.txt     | 64.9535    | 0.650    | 0.187    | 0.832
+NaiveBayes+SelfSelected.txt              | 67.9691    | 0.680    | 0.252    | 0.824
+OneR+CfsSubsetEval.txt                   | 70.5415    | 0.705    | 0.394    | 0.656
+OneR+CorrelationAttributeEval.txt        | 65.8668    | 0.659    | 0.593    | 0.533
+OneR+GainRatioAttributeEval.txt          | 65.8668    | 0.659    | 0.593    | 0.533
+OneR+InfoGainAttributeEval.txt           | 70.5415    | 0.705    | 0.394    | 0.656
+OneR+SelfSelected.txt                    | 70.5415    | 0.705    | 0.394    | 0.656

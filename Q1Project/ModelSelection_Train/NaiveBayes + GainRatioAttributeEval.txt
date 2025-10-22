@@ -1,0 +1,119 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.NaiveBayes 
+Relation:     train_GainRatioAttributeEval
+Instances:    74014
+Attributes:   12
+              ownerTypeIds__6
+              foundationTypeIds__2
+              damTypeIds__4
+              widthOfLocks
+              lengthOfLocks
+              damTypeIds__1
+              isAssociatedStructureId
+              foundationTypeIds__1
+              coreTypeIds__1
+              damTypeIds__7
+              purposeIds__3
+              hazardId
+Test mode:    evaluate on training data
+
+=== Classifier model (full training set) ===
+
+Naive Bayes Classifier
+
+                            Class
+Attribute                   val_4   val_2   val_1   val_3
+                           (0.18)  (0.65)  (0.04)  (0.12)
+==========================================================
+ownerTypeIds__6
+  F                        13264.0 47956.0  2611.0  8901.0
+  T                          176.0   357.0   645.0   112.0
+  [total]                  13440.0 48313.0  3256.0  9013.0
+
+foundationTypeIds__2
+  F                        13425.0 48312.0  3255.0  9012.0
+  T                           15.0     1.0     1.0     1.0
+  [total]                  13440.0 48313.0  3256.0  9013.0
+
+damTypeIds__4
+  F                        13408.0 48309.0  3255.0  9012.0
+  T                           32.0     4.0     1.0     1.0
+  [total]                  13440.0 48313.0  3256.0  9013.0
+
+widthOfLocks
+  (-0.001, 0.47]           13411.0 48296.0  3254.0  8910.0
+  (0.47, 110.0]               29.0    17.0     2.0   103.0
+  [total]                  13440.0 48313.0  3256.0  9013.0
+
+lengthOfLocks
+  (-0.001, 3.161]          13410.0 48292.0  3254.0  8909.0
+  (3.161, 1200.0]             30.0    21.0     2.0   104.0
+  [total]                  13440.0 48313.0  3256.0  9013.0
+
+damTypeIds__1
+  F                        13270.0 48260.0  3255.0  8982.0
+  T                          170.0    53.0     1.0    31.0
+  [total]                  13440.0 48313.0  3256.0  9013.0
+
+isAssociatedStructureId
+  val_0                    12949.0 48098.0  3254.0  8934.0
+  val_1                      491.0   215.0     2.0    79.0
+  [total]                  13440.0 48313.0  3256.0  9013.0
+
+foundationTypeIds__1
+  T                         1846.0  1182.0     2.0   624.0
+  F                        11594.0 47131.0  3254.0  8389.0
+  [total]                  13440.0 48313.0  3256.0  9013.0
+
+coreTypeIds__1
+  F                        13431.0 48311.0  3255.0  9007.0
+  T                            9.0     2.0     1.0     6.0
+  [total]                  13440.0 48313.0  3256.0  9013.0
+
+damTypeIds__7
+  F                        13167.0 48055.0  3249.0  8551.0
+  T                          273.0   258.0     7.0   462.0
+  [total]                  13440.0 48313.0  3256.0  9013.0
+
+purposeIds__3
+  F                        13295.0 48236.0  3254.0  8876.0
+  T                          145.0    77.0     2.0   137.0
+  [total]                  13440.0 48313.0  3256.0  9013.0
+
+
+
+Time taken to build model: 0.02 seconds
+
+=== Evaluation on training set ===
+
+Time taken to test model on training data: 0.19 seconds
+
+=== Summary ===
+
+Correctly Classified Instances       49939               67.4724 %
+Incorrectly Classified Instances     24075               32.5276 %
+Kappa statistic                          0.1716
+Mean absolute error                      0.2469
+Root mean squared error                  0.3523
+Relative absolute error                 94.1852 %
+Root relative squared error             97.3264 %
+Total Number of Instances            74014     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.176    0.034    0.535      0.176    0.265      0.231    0.578     0.260     val_4
+                 0.960    0.816    0.689      0.960    0.802      0.240    0.572     0.688     val_2
+                 0.197    0.007    0.554      0.197    0.291      0.314    0.625     0.148     val_1
+                 0.061    0.008    0.509      0.061    0.109      0.144    0.541     0.160     val_3
+Weighted Avg.    0.675    0.540    0.633      0.675    0.598      0.230    0.572     0.522     
+
+=== Confusion Matrix ===
+
+     a     b     c     d   <-- classified as
+  2363 10675   119   281 |     a = val_4
+  1383 46384   302   242 |     b = val_2
+     2  2603   642     7 |     c = val_1
+   670  7696    95   550 |     d = val_3
+

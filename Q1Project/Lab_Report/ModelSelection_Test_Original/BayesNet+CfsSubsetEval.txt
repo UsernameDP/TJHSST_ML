@@ -1,0 +1,110 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.misc.InputMappedClassifier -I -trim -W weka.classifiers.bayes.BayesNet -- -D -Q weka.classifiers.bayes.net.search.local.K2 -- -P 1 -S BAYES -E weka.classifiers.bayes.net.estimate.SimpleEstimator -- -A 0.5
+Relation:     train_CfsSubsetEval
+Instances:    74014
+Attributes:   16
+              primaryPurposeId
+              ownerTypeIds__6
+              primaryOwnerTypeId
+              purposeIds__8
+              purposeIds__10
+              state
+              foundationTypeIds__1
+              damHeight
+              nidHeightId
+              volume
+              nidStorage
+              normalStorage
+              maxDischarge
+              huc2
+              femaRegion
+              hazardId
+Test mode:    user supplied test set:  size unknown (reading incrementally)
+
+=== Classifier model (full training set) ===
+
+InputMappedClassifier:
+
+Bayes Network Classifier
+not using ADTree
+#attributes=16 #classindex=15
+Network structure (nodes followed by parents)
+primaryPurposeId(12): hazardId 
+ownerTypeIds__6(2): hazardId 
+primaryOwnerTypeId(7): hazardId 
+purposeIds__8(2): hazardId 
+purposeIds__10(2): hazardId 
+state(52): hazardId 
+foundationTypeIds__1(2): hazardId 
+damHeight(36): hazardId 
+nidHeightId(5): hazardId 
+volume(30): hazardId 
+nidStorage(97): hazardId 
+normalStorage(91): hazardId 
+maxDischarge(47): hazardId 
+huc2(22): hazardId 
+femaRegion(7): hazardId 
+hazardId(4): 
+LogScore Bayes: -2173890.311341199
+LogScore BDeu: -2183418.1261400157
+LogScore MDL: -2181551.975243308
+LogScore ENTROPY: -2172587.973613295
+LogScore AIC: -2174186.973613295
+
+Attribute mappings:
+
+Model attributes                	    Incoming attributes
+--------------------------------	    ----------------
+(nominal) primaryPurposeId      	--> 1 (nominal) primaryPurposeId
+(nominal) ownerTypeIds__6       	--> 2 (nominal) ownerTypeIds__6
+(nominal) primaryOwnerTypeId    	--> 3 (nominal) primaryOwnerTypeId
+(nominal) purposeIds__8         	--> 4 (nominal) purposeIds__8
+(nominal) purposeIds__10        	--> 5 (nominal) purposeIds__10
+(nominal) state                 	--> 6 (nominal) state
+(nominal) foundationTypeIds__1  	--> 7 (nominal) foundationTypeIds__1
+(nominal) damHeight             	--> 8 (nominal) damHeight
+(nominal) nidHeightId           	--> 9 (nominal) nidHeightId
+(nominal) volume                	--> 10 (nominal) volume
+(nominal) nidStorage            	--> 11 (nominal) nidStorage
+(nominal) normalStorage         	--> 12 (nominal) normalStorage
+(nominal) maxDischarge          	--> 13 (nominal) maxDischarge
+(nominal) huc2                  	--> 14 (nominal) huc2
+(nominal) femaRegion            	--> 15 (nominal) femaRegion
+(nominal) hazardId              	--> 16 (nominal) hazardId
+
+
+Time taken to build model: 0.2 seconds
+
+=== Evaluation on test set ===
+
+Time taken to test model on supplied test set: 0.19 seconds
+
+=== Summary ===
+
+Correctly Classified Instances       12051               65.1265 %
+Incorrectly Classified Instances      6453               34.8735 %
+Kappa statistic                          0.4082
+Mean absolute error                      0.1801
+Root mean squared error                  0.3649
+Relative absolute error                 68.559  %
+Root relative squared error            100.5698 %
+Total Number of Instances            18504     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.509    0.087    0.569      0.509    0.537      0.441    0.844     0.596     val_4
+                 0.711    0.240    0.846      0.711    0.773      0.451    0.831     0.890     val_2
+                 0.813    0.096    0.264      0.813    0.399      0.428    0.942     0.618     val_1
+                 0.497    0.116    0.382      0.497    0.432      0.342    0.808     0.445     val_3
+Weighted Avg.    0.651    0.190    0.713      0.651    0.671      0.435    0.835     0.769     
+
+=== Confusion Matrix ===
+
+    a    b    c    d   <-- classified as
+ 1727  825  162  680 |    a = val_4
+  839 8550 1468 1166 |    b = val_2
+   16   95  615   30 |    c = val_1
+  455  636   81 1159 |    d = val_3
+

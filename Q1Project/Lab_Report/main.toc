@@ -1,0 +1,65 @@
+\contentsline {section}{\numberline {1}Project Goal}{4}{section.1}%
+\contentsline {section}{\numberline {2}Description of Dataset}{4}{section.2}%
+\contentsline {section}{\numberline {3}Dataset Preprocessing}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Data Injectivity Test}{7}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Results of the Data Injectivity Test}{7}{subsubsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.2}Deleting Irregular Rows}{8}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Working with Weka}{8}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Unreasonable Attributes}{8}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Missing Values (Column-Wise Analysis)}{10}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Missing Values (Row-Wise Analysis)}{11}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Changing Datatypes}{11}{subsection.3.7}%
+\contentsline {subsubsection}{\numberline {3.7.1}Converted String Attributes}{11}{subsubsection.3.7.1}%
+\contentsline {subsubsection}{\numberline {3.7.2}One-Hot Encoding}{11}{subsubsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.8}Dealing with Missing Values (Class)}{11}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Dealing with Missing Values (Continuous, Nominal, Discrete)}{12}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.10}Obvious Attributes}{12}{subsection.3.10}%
+\contentsline {subsection}{\numberline {3.11}Data Discretization}{12}{subsection.3.11}%
+\contentsline {section}{\numberline {4}Attribute Selection}{13}{section.4}%
+\contentsline {subsection}{\numberline {4.1}CfsSubsetEval}{13}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}CorrelationAttributeEval}{13}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}GainRatioAttributeEval}{14}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}InfoGainAttributeEval}{14}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}SelfSelected}{14}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Model Selection}{15}{section.5}%
+\contentsline {subsection}{\numberline {5.1}OneR}{15}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Naive Bayes}{15}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}J48}{15}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}BayesNet}{15}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Models}{15}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Results}{16}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Overfitting and Underfitting}{17}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}TP,FP Rates, and ROC}{17}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Discussion and Conclusion}{17}{section.7}%
+\contentsline {section}{References}{18}{section*.9}%
+\contentsline {section}{\numberline {8}Appendix}{18}{section.8}%
+\contentsline {section}{\numberline {A}Attribute Selection (Weka Outputs)}{18}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}CfsSubsetEval}{18}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}CorrelationAttributeEval}{18}{subsection.A.2}%
+\contentsline {subsection}{\numberline {A.3}GainRatioAttributeEval}{20}{subsection.A.3}%
+\contentsline {subsection}{\numberline {A.4}InfoGainAttributeEval}{21}{subsection.A.4}%
+\contentsline {section}{\numberline {B}Model Selection (Weka Outputs)}{23}{appendix.B}%
+\contentsline {subsection}{\numberline {B.1}OneR}{23}{subsection.B.1}%
+\contentsline {subsubsection}{\numberline {B.1.1}OneR + CfsSubsetEval}{23}{subsubsection.B.1.1}%
+\contentsline {subsubsection}{\numberline {B.1.2}OneR + CorrelationAttributeEval}{24}{subsubsection.B.1.2}%
+\contentsline {subsubsection}{\numberline {B.1.3}OneR + GainRatioAttributeEval}{25}{subsubsection.B.1.3}%
+\contentsline {subsubsection}{\numberline {B.1.4}OneR + InfoGainAttributeEval}{26}{subsubsection.B.1.4}%
+\contentsline {subsubsection}{\numberline {B.1.5}OneR + SelfSelected}{27}{subsubsection.B.1.5}%
+\contentsline {subsection}{\numberline {B.2}NaiveBayes}{28}{subsection.B.2}%
+\contentsline {subsubsection}{\numberline {B.2.1}NaiveBayes + CfsSubsetEval}{28}{subsubsection.B.2.1}%
+\contentsline {subsubsection}{\numberline {B.2.2}NaiveBayes + CorrelationAttributeEval}{29}{subsubsection.B.2.2}%
+\contentsline {subsubsection}{\numberline {B.2.3}NaiveBayes + GainRatioAttributeEval}{30}{subsubsection.B.2.3}%
+\contentsline {subsubsection}{\numberline {B.2.4}NaiveBayes + InfoGainAttributeEval}{30}{subsubsection.B.2.4}%
+\contentsline {subsubsection}{\numberline {B.2.5}NaiveBayes + SelfSelected}{31}{subsubsection.B.2.5}%
+\contentsline {subsection}{\numberline {B.3}J48}{32}{subsection.B.3}%
+\contentsline {subsubsection}{\numberline {B.3.1}J48 + CfsSubsetEval}{32}{subsubsection.B.3.1}%
+\contentsline {subsubsection}{\numberline {B.3.2}J48 + CorrelationAttributeEval}{33}{subsubsection.B.3.2}%
+\contentsline {subsubsection}{\numberline {B.3.3}J48 + GainRatioAttributeEval}{34}{subsubsection.B.3.3}%
+\contentsline {subsubsection}{\numberline {B.3.4}J48 + InfoGainAttributeEval}{35}{subsubsection.B.3.4}%
+\contentsline {subsubsection}{\numberline {B.3.5}J48 + SelfSelected}{36}{subsubsection.B.3.5}%
+\contentsline {subsection}{\numberline {B.4}BayesNet}{37}{subsection.B.4}%
+\contentsline {subsubsection}{\numberline {B.4.1}BayesNet + CfsSubsetEval}{37}{subsubsection.B.4.1}%
+\contentsline {subsubsection}{\numberline {B.4.2}BayesNet + CorrelationAttributeEval}{38}{subsubsection.B.4.2}%
+\contentsline {subsubsection}{\numberline {B.4.3}BayesNet + GainRatioAttributeEval}{39}{subsubsection.B.4.3}%
+\contentsline {subsubsection}{\numberline {B.4.4}BayesNet + InfoGainAttributeEval}{40}{subsubsection.B.4.4}%
+\contentsline {subsubsection}{\numberline {B.4.5}BayesNet + SelfSelected}{41}{subsubsection.B.4.5}%

@@ -1,0 +1,107 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.OneR -B 6
+Relation:     train_SelfSelected
+Instances:    74014
+Attributes:   7
+              primaryPurposeId
+              damHeight
+              state
+              surfaceArea
+              damLength
+              volume
+              hazardId
+Test mode:    evaluate on training data
+
+=== Classifier model (full training set) ===
+
+state:
+	Texas	-> val_2
+	Kansas	-> val_2
+	Maryland	-> val_2
+	Virginia	-> val_1
+	Iowa	-> val_2
+	Michigan	-> val_2
+	Minnesota	-> val_2
+	Colorado	-> val_2
+	South Dakota	-> val_2
+	Missouri	-> val_2
+	Montana	-> val_2
+	Rhode Island	-> val_4
+	Georgia	-> val_2
+	Illinois	-> val_2
+	Mississippi	-> val_2
+	California	-> val_4
+	Alabama	-> val_2
+	Nevada	-> val_2
+	Oklahoma	-> val_2
+	Nebraska	-> val_2
+	Arizona	-> val_2
+	North Carolina	-> val_4
+	Indiana	-> val_2
+	Tennessee	-> val_2
+	Utah	-> val_3
+	Oregon	-> val_2
+	Ohio	-> val_3
+	Arkansas	-> val_2
+	New Jersey	-> val_3
+	Kentucky	-> val_2
+	Wisconsin	-> val_2
+	New York	-> val_2
+	Florida	-> val_2
+	South Carolina	-> val_2
+	Pennsylvania	-> val_4
+	Connecticut	-> val_3
+	Wyoming	-> val_2
+	Washington	-> val_4
+	North Dakota	-> val_2
+	Alaska	-> val_3
+	New Mexico	-> val_4
+	Louisiana	-> val_2
+	Vermont	-> val_2
+	Delaware	-> val_4
+	West Virginia	-> val_4
+	Idaho	-> val_2
+	New Hampshire	-> val_2
+	Massachusetts	-> val_3
+	Maine	-> val_2
+	Hawaii	-> val_4
+	Puerto Rico	-> val_4
+	Guam	-> val_4
+(52152/74014 instances correct)
+
+
+Time taken to build model: 0.01 seconds
+
+=== Evaluation on training set ===
+
+Time taken to test model on training data: 0.03 seconds
+
+=== Summary ===
+
+Correctly Classified Instances       52152               70.4623 %
+Incorrectly Classified Instances     21862               29.5377 %
+Kappa statistic                          0.334 
+Mean absolute error                      0.1477
+Root mean squared error                  0.3843
+Relative absolute error                 56.3439 %
+Root relative squared error            106.1557 %
+Total Number of Instances            74014     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.279    0.056    0.526      0.279    0.365      0.292    0.612     0.278     val_4
+                 0.926    0.597    0.745      0.926    0.826      0.401    0.664     0.738     val_2
+                 0.441    0.011    0.658      0.441    0.528      0.522    0.715     0.315     val_1
+                 0.245    0.037    0.482      0.245    0.325      0.283    0.604     0.210     val_3
+Weighted Avg.    0.705    0.405    0.669      0.705    0.668      0.372    0.650     0.571     
+
+=== Confusion Matrix ===
+
+     a     b     c     d   <-- classified as
+  3754  8093   345  1246 |     a = val_4
+  2236 44757   249  1069 |     b = val_2
+    31  1731  1434    58 |     c = val_1
+  1121  5532   151  2207 |     d = val_3
+

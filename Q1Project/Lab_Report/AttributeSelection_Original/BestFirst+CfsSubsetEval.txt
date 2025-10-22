@@ -1,0 +1,122 @@
+=== Run information ===
+
+Evaluator:    weka.attributeSelection.CfsSubsetEval -P 1 -E 1
+Search:       weka.attributeSelection.BestFirst -D 1 -N 5
+Relation:     final_train
+Instances:    74014
+Attributes:   80
+              latitude
+              longitude
+              primaryPurposeId
+              nidHeight
+              ownerTypeIds__1
+              ownerTypeIds__2
+              ownerTypeIds__3
+              ownerTypeIds__4
+              ownerTypeIds__5
+              ownerTypeIds__6
+              primaryOwnerTypeId
+              separateStructuresCount
+              isAssociatedStructureId
+              nonFederalDamOnFederalId
+              purposeIds__1
+              purposeIds__2
+              purposeIds__3
+              purposeIds__4
+              purposeIds__5
+              purposeIds__6
+              purposeIds__7
+              purposeIds__8
+              purposeIds__9
+              purposeIds__10
+              purposeIds__11
+              purposeIds__12
+              state
+              distance
+              stateRegulatedId
+              fedRegulatedId
+              jurisdictionAuthorityId
+              permittingAuthorityId
+              inspectionAuthorityId
+              enforcementAuthorityId
+              secretaryAgricultureBuiltId
+              nrcsWatershedAuthorizationId
+              primaryDamTypeId
+              damTypeIds__1
+              damTypeIds__2
+              damTypeIds__3
+              damTypeIds__4
+              damTypeIds__5
+              damTypeIds__6
+              damTypeIds__7
+              damTypeIds__8
+              damTypeIds__9
+              damTypeIds__10
+              damTypeIds__11
+              damTypeIds__12
+              coreTypeIds__1
+              coreTypeIds__2
+              coreTypeIds__3
+              coreTypeIds__4
+              coreTypeIds__5
+              coreTypeIds__6
+              foundationTypeIds__1
+              foundationTypeIds__2
+              foundationTypeIds__3
+              foundationTypeIds__4
+              damHeight
+              hydraulicHeight
+              structuralHeight
+              nidHeightId
+              damLength
+              volume
+              nidStorage
+              maxStorage
+              normalStorage
+              surfaceArea
+              drainageArea
+              maxDischarge
+              spillwayTypeId
+              spillwayWidth
+              numberOfLocks
+              lengthOfLocks
+              widthOfLocks
+              privateDamId
+              huc2
+              femaRegion
+              hazardId
+Evaluation mode:    evaluate on all training data
+
+
+
+=== Attribute Selection on all input data ===
+
+Search Method:
+	Best first.
+	Start set: no attributes
+	Search direction: forward
+	Stale search after 5 node expansions
+	Total number of subsets evaluated: 1399
+	Merit of best subset found:    0.139
+
+Attribute Subset Evaluator (supervised, Class (nominal): 80 hazardId):
+	CFS Subset Evaluator
+	Including locally predictive attributes
+
+Selected attributes: 3,10,11,22,24,27,56,60,63,65,66,68,71,78,79 : 15
+                     primaryPurposeId
+                     ownerTypeIds__6
+                     primaryOwnerTypeId
+                     purposeIds__8
+                     purposeIds__10
+                     state
+                     foundationTypeIds__1
+                     damHeight
+                     nidHeightId
+                     volume
+                     nidStorage
+                     normalStorage
+                     maxDischarge
+                     huc2
+                     femaRegion
+

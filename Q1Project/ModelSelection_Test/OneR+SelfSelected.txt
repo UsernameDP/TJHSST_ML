@@ -1,0 +1,121 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.misc.InputMappedClassifier -I -trim -W weka.classifiers.rules.OneR -- -B 6
+Relation:     train_SelfSelected
+Instances:    74014
+Attributes:   7
+              primaryPurposeId
+              damHeight
+              state
+              surfaceArea
+              damLength
+              volume
+              hazardId
+Test mode:    user supplied test set:  size unknown (reading incrementally)
+
+=== Classifier model (full training set) ===
+
+InputMappedClassifier:
+
+state:
+	Texas	-> val_2
+	Kansas	-> val_2
+	Maryland	-> val_2
+	Virginia	-> val_1
+	Iowa	-> val_2
+	Michigan	-> val_2
+	Minnesota	-> val_2
+	Colorado	-> val_2
+	South Dakota	-> val_2
+	Missouri	-> val_2
+	Montana	-> val_2
+	Rhode Island	-> val_4
+	Georgia	-> val_2
+	Illinois	-> val_2
+	Mississippi	-> val_2
+	California	-> val_4
+	Alabama	-> val_2
+	Nevada	-> val_2
+	Oklahoma	-> val_2
+	Nebraska	-> val_2
+	Arizona	-> val_2
+	North Carolina	-> val_4
+	Indiana	-> val_2
+	Tennessee	-> val_2
+	Utah	-> val_3
+	Oregon	-> val_2
+	Ohio	-> val_3
+	Arkansas	-> val_2
+	New Jersey	-> val_3
+	Kentucky	-> val_2
+	Wisconsin	-> val_2
+	New York	-> val_2
+	Florida	-> val_2
+	South Carolina	-> val_2
+	Pennsylvania	-> val_4
+	Connecticut	-> val_3
+	Wyoming	-> val_2
+	Washington	-> val_4
+	North Dakota	-> val_2
+	Alaska	-> val_3
+	New Mexico	-> val_4
+	Louisiana	-> val_2
+	Vermont	-> val_2
+	Delaware	-> val_4
+	West Virginia	-> val_4
+	Idaho	-> val_2
+	New Hampshire	-> val_2
+	Massachusetts	-> val_3
+	Maine	-> val_2
+	Hawaii	-> val_4
+	Puerto Rico	-> val_4
+	Guam	-> val_4
+(52152/74014 instances correct)
+
+Attribute mappings:
+
+Model attributes            	    Incoming attributes
+----------------------------	    ----------------
+(nominal) primaryPurposeId  	--> 1 (nominal) primaryPurposeId
+(nominal) damHeight         	--> 2 (nominal) damHeight
+(nominal) state             	--> 3 (nominal) state
+(nominal) surfaceArea       	--> 4 (nominal) surfaceArea
+(nominal) damLength         	--> 5 (nominal) damLength
+(nominal) volume            	--> 6 (nominal) volume
+(nominal) hazardId          	--> 7 (nominal) hazardId
+
+
+Time taken to build model: 0.01 seconds
+
+=== Evaluation on test set ===
+
+Time taken to test model on supplied test set: 0.07 seconds
+
+=== Summary ===
+
+Correctly Classified Instances       13053               70.5415 %
+Incorrectly Classified Instances      5451               29.4585 %
+Kappa statistic                          0.344 
+Mean absolute error                      0.1473
+Root mean squared error                  0.3838
+Relative absolute error                 56.0616 %
+Root relative squared error            105.766  %
+Total Number of Instances            18504     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.279    0.057    0.526      0.279    0.365      0.290    0.611     0.279     val_4
+                 0.926    0.581    0.747      0.926    0.827      0.415    0.672     0.740     val_2
+                 0.450    0.011    0.638      0.450    0.528      0.519    0.719     0.309     val_1
+                 0.271    0.039    0.498      0.271    0.351      0.304    0.616     0.227     val_3
+Weighted Avg.    0.705    0.394    0.671      0.705    0.670      0.383    0.656     0.573     
+
+=== Confusion Matrix ===
+
+     a     b     c     d   <-- classified as
+   947  2026    93   328 |     a = val_4
+   534 11135    66   288 |     b = val_2
+     6   391   340    19 |     c = val_1
+   315  1351    34   631 |     d = val_3
+

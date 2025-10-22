@@ -1,0 +1,4 @@
+bidict
+scikit-learn
+matplotlib
+pandas

@@ -1,0 +1,528 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     train_CorrelationAttributeEval
+Instances:    74014
+Attributes:   14
+              purposeIds__10
+              ownerTypeIds__1
+              foundationTypeIds__1
+              purposeIds__8
+              stateRegulatedId
+              primaryOwnerTypeId
+              purposeIds__5
+              fedRegulatedId
+              ownerTypeIds__5
+              permittingAuthorityId
+              enforcementAuthorityId
+              femaRegion
+              foundationTypeIds__3
+              hazardId
+Test mode:    evaluate on training data
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+purposeIds__10 = F
+|   femaRegion = (5.0, 6.0]
+|   |   foundationTypeIds__1 = T
+|   |   |   ownerTypeIds__1 = F
+|   |   |   |   stateRegulatedId = val_1: val_4 (272.0/42.0)
+|   |   |   |   stateRegulatedId = val_0
+|   |   |   |   |   purposeIds__8 = F
+|   |   |   |   |   |   foundationTypeIds__3 = T: val_2 (30.0/9.0)
+|   |   |   |   |   |   foundationTypeIds__3 = F
+|   |   |   |   |   |   |   purposeIds__5 = F: val_2 (15.0/7.0)
+|   |   |   |   |   |   |   purposeIds__5 = T: val_3 (12.0/5.0)
+|   |   |   |   |   purposeIds__8 = T: val_4 (50.0/4.0)
+|   |   |   ownerTypeIds__1 = T
+|   |   |   |   stateRegulatedId = val_1
+|   |   |   |   |   primaryOwnerTypeId = val_5: val_4 (5.0)
+|   |   |   |   |   primaryOwnerTypeId = val_1
+|   |   |   |   |   |   purposeIds__5 = F: val_2 (29.0/11.0)
+|   |   |   |   |   |   purposeIds__5 = T: val_4 (48.0/18.0)
+|   |   |   |   |   primaryOwnerTypeId = val_3: val_4 (0.0)
+|   |   |   |   |   primaryOwnerTypeId = val_4: val_4 (0.0)
+|   |   |   |   |   primaryOwnerTypeId = val_6: val_4 (0.0)
+|   |   |   |   |   primaryOwnerTypeId = val_2: val_4 (0.0)
+|   |   |   |   |   primaryOwnerTypeId = val_7: val_4 (0.0)
+|   |   |   |   stateRegulatedId = val_0
+|   |   |   |   |   purposeIds__8 = F: val_3 (11.0/4.0)
+|   |   |   |   |   purposeIds__8 = T: val_2 (3.0)
+|   |   foundationTypeIds__1 = F
+|   |   |   ownerTypeIds__5 = T
+|   |   |   |   foundationTypeIds__3 = T
+|   |   |   |   |   stateRegulatedId = val_1: val_4 (350.0/139.0)
+|   |   |   |   |   stateRegulatedId = val_0: val_2 (10.0/4.0)
+|   |   |   |   foundationTypeIds__3 = F
+|   |   |   |   |   purposeIds__5 = F: val_2 (1224.0/474.0)
+|   |   |   |   |   purposeIds__5 = T: val_4 (268.0/139.0)
+|   |   |   ownerTypeIds__5 = F
+|   |   |   |   fedRegulatedId = val_val_0: val_2 (7699.0/1266.0)
+|   |   |   |   fedRegulatedId = val_val_1
+|   |   |   |   |   purposeIds__8 = F
+|   |   |   |   |   |   ownerTypeIds__1 = F
+|   |   |   |   |   |   |   foundationTypeIds__3 = T: val_2 (41.0/16.0)
+|   |   |   |   |   |   |   foundationTypeIds__3 = F
+|   |   |   |   |   |   |   |   purposeIds__5 = F
+|   |   |   |   |   |   |   |   |   primaryOwnerTypeId = val_5: val_2 (0.0)
+|   |   |   |   |   |   |   |   |   primaryOwnerTypeId = val_1: val_2 (0.0)
+|   |   |   |   |   |   |   |   |   primaryOwnerTypeId = val_3: val_2 (88.0/32.0)
+|   |   |   |   |   |   |   |   |   primaryOwnerTypeId = val_4: val_4 (2.0)
+|   |   |   |   |   |   |   |   |   primaryOwnerTypeId = val_6: val_2 (0.0)
+|   |   |   |   |   |   |   |   |   primaryOwnerTypeId = val_2: val_4 (2.0/1.0)
+|   |   |   |   |   |   |   |   |   primaryOwnerTypeId = val_7: val_2 (0.0)
+|   |   |   |   |   |   |   |   purposeIds__5 = T
+|   |   |   |   |   |   |   |   |   permittingAuthorityId = val_1: val_2 (15.0/5.0)
+|   |   |   |   |   |   |   |   |   permittingAuthorityId = val_0: val_4 (25.0/7.0)
+|   |   |   |   |   |   ownerTypeIds__1 = T: val_4 (4.0)
+|   |   |   |   |   purposeIds__8 = T
+|   |   |   |   |   |   ownerTypeIds__1 = F
+|   |   |   |   |   |   |   foundationTypeIds__3 = T
+|   |   |   |   |   |   |   |   primaryOwnerTypeId = val_5: val_3 (0.0)
+|   |   |   |   |   |   |   |   primaryOwnerTypeId = val_1: val_3 (0.0)
+|   |   |   |   |   |   |   |   primaryOwnerTypeId = val_3: val_3 (14.0/4.0)
+|   |   |   |   |   |   |   |   primaryOwnerTypeId = val_4: val_4 (3.0)
+|   |   |   |   |   |   |   |   primaryOwnerTypeId = val_6: val_3 (0.0)
+|   |   |   |   |   |   |   |   primaryOwnerTypeId = val_2: val_2 (1.0)
+|   |   |   |   |   |   |   |   primaryOwnerTypeId = val_7: val_3 (0.0)
+|   |   |   |   |   |   |   foundationTypeIds__3 = F: val_4 (21.0/1.0)
+|   |   |   |   |   |   ownerTypeIds__1 = T: val_2 (3.0)
+|   femaRegion = (6.0, 7.0]
+|   |   foundationTypeIds__1 = T
+|   |   |   permittingAuthorityId = val_1: val_4 (230.0/83.0)
+|   |   |   permittingAuthorityId = val_0
+|   |   |   |   fedRegulatedId = val_val_0: val_2 (27.0/5.0)
+|   |   |   |   fedRegulatedId = val_val_1
+|   |   |   |   |   purposeIds__5 = F
+|   |   |   |   |   |   foundationTypeIds__3 = T
+|   |   |   |   |   |   |   purposeIds__8 = F: val_2 (4.0/1.0)
+|   |   |   |   |   |   |   purposeIds__8 = T: val_4 (2.0)
+|   |   |   |   |   |   foundationTypeIds__3 = F
+|   |   |   |   |   |   |   primaryOwnerTypeId = val_5: val_2 (0.0)
+|   |   |   |   |   |   |   primaryOwnerTypeId = val_1: val_2 (1.0)
+|   |   |   |   |   |   |   primaryOwnerTypeId = val_3: val_3 (2.0)
+|   |   |   |   |   |   |   primaryOwnerTypeId = val_4: val_2 (0.0)
+|   |   |   |   |   |   |   primaryOwnerTypeId = val_6: val_2 (0.0)
+|   |   |   |   |   |   |   primaryOwnerTypeId = val_2: val_4 (2.0/1.0)
+|   |   |   |   |   |   |   primaryOwnerTypeId = val_7: val_2 (0.0)
+|   |   |   |   |   purposeIds__5 = T: val_4 (21.0/6.0)
+|   |   foundationTypeIds__1 = F
+|   |   |   purposeIds__5 = F: val_2 (7306.0/880.0)
+|   |   |   purposeIds__5 = T
+|   |   |   |   foundationTypeIds__3 = T
+|   |   |   |   |   fedRegulatedId = val_val_0: val_2 (600.0/186.0)
+|   |   |   |   |   fedRegulatedId = val_val_1: val_4 (24.0/3.0)
+|   |   |   |   foundationTypeIds__3 = F
+|   |   |   |   |   stateRegulatedId = val_1: val_4 (335.0/135.0)
+|   |   |   |   |   stateRegulatedId = val_0
+|   |   |   |   |   |   fedRegulatedId = val_val_0: val_2 (1364.0/553.0)
+|   |   |   |   |   |   fedRegulatedId = val_val_1
+|   |   |   |   |   |   |   purposeIds__8 = F: val_2 (19.0/10.0)
+|   |   |   |   |   |   |   purposeIds__8 = T: val_4 (4.0)
+|   femaRegion = (0.999, 3.0]
+|   |   primaryOwnerTypeId = val_5
+|   |   |   foundationTypeIds__1 = T
+|   |   |   |   stateRegulatedId = val_1: val_4 (221.0/44.0)
+|   |   |   |   stateRegulatedId = val_0: val_2 (15.0/6.0)
+|   |   |   foundationTypeIds__1 = F
+|   |   |   |   purposeIds__8 = F
+|   |   |   |   |   purposeIds__5 = F
+|   |   |   |   |   |   fedRegulatedId = val_val_0
+|   |   |   |   |   |   |   ownerTypeIds__1 = F
+|   |   |   |   |   |   |   |   foundationTypeIds__3 = T
+|   |   |   |   |   |   |   |   |   stateRegulatedId = val_1: val_2 (33.0/17.0)
+|   |   |   |   |   |   |   |   |   stateRegulatedId = val_0: val_4 (2.0/1.0)
+|   |   |   |   |   |   |   |   foundationTypeIds__3 = F: val_4 (513.0/279.0)
+|   |   |   |   |   |   |   ownerTypeIds__1 = T: val_3 (9.0/1.0)
+|   |   |   |   |   |   fedRegulatedId = val_val_1
+|   |   |   |   |   |   |   stateRegulatedId = val_1: val_3 (5.0/1.0)
+|   |   |   |   |   |   |   stateRegulatedId = val_0: val_2 (8.0/2.0)
+|   |   |   |   |   purposeIds__5 = T
+|   |   |   |   |   |   stateRegulatedId = val_1: val_3 (964.0/514.0)
+|   |   |   |   |   |   stateRegulatedId = val_0: val_2 (12.0/4.0)
+|   |   |   |   purposeIds__8 = T
+|   |   |   |   |   stateRegulatedId = val_1
+|   |   |   |   |   |   fedRegulatedId = val_val_0: val_4 (702.0/274.0)
+|   |   |   |   |   |   fedRegulatedId = val_val_1: val_2 (3.0/1.0)
+|   |   |   |   |   stateRegulatedId = val_0: val_3 (4.0/2.0)
+|   |   primaryOwnerTypeId = val_1
+|   |   |   fedRegulatedId = val_val_0
+|   |   |   |   foundationTypeIds__3 = T
+|   |   |   |   |   stateRegulatedId = val_1: val_3 (210.0/114.0)
+|   |   |   |   |   stateRegulatedId = val_0: val_2 (16.0/6.0)
+|   |   |   |   foundationTypeIds__3 = F
+|   |   |   |   |   purposeIds__5 = F
+|   |   |   |   |   |   purposeIds__8 = F
+|   |   |   |   |   |   |   permittingAuthorityId = val_1
+|   |   |   |   |   |   |   |   foundationTypeIds__1 = T: val_2 (2.0)
+|   |   |   |   |   |   |   |   foundationTypeIds__1 = F: val_1 (1086.0/635.0)
+|   |   |   |   |   |   |   permittingAuthorityId = val_0: val_2 (72.0/34.0)
+|   |   |   |   |   |   purposeIds__8 = T: val_4 (129.0/67.0)
+|   |   |   |   |   purposeIds__5 = T
+|   |   |   |   |   |   permittingAuthorityId = val_1
+|   |   |   |   |   |   |   stateRegulatedId = val_1
+|   |   |   |   |   |   |   |   purposeIds__8 = F: val_3 (2710.0/1710.0)
+|   |   |   |   |   |   |   |   purposeIds__8 = T: val_1 (51.0/36.0)
+|   |   |   |   |   |   |   stateRegulatedId = val_0: val_2 (11.0/2.0)
+|   |   |   |   |   |   permittingAuthorityId = val_0: val_4 (35.0/20.0)
+|   |   |   fedRegulatedId = val_val_1
+|   |   |   |   foundationTypeIds__3 = T
+|   |   |   |   |   foundationTypeIds__1 = T: val_4 (14.0/4.0)
+|   |   |   |   |   foundationTypeIds__1 = F
+|   |   |   |   |   |   purposeIds__5 = F
+|   |   |   |   |   |   |   stateRegulatedId = val_1: val_3 (3.0/1.0)
+|   |   |   |   |   |   |   stateRegulatedId = val_0: val_2 (11.0/5.0)
+|   |   |   |   |   |   purposeIds__5 = T: val_3 (9.0/4.0)
+|   |   |   |   foundationTypeIds__3 = F
+|   |   |   |   |   foundationTypeIds__1 = T: val_2 (112.0/44.0)
+|   |   |   |   |   foundationTypeIds__1 = F
+|   |   |   |   |   |   stateRegulatedId = val_1
+|   |   |   |   |   |   |   purposeIds__8 = F: val_4 (87.0/41.0)
+|   |   |   |   |   |   |   purposeIds__8 = T: val_2 (7.0/3.0)
+|   |   |   |   |   |   stateRegulatedId = val_0: val_2 (129.0/69.0)
+|   |   primaryOwnerTypeId = val_3
+|   |   |   fedRegulatedId = val_val_0
+|   |   |   |   permittingAuthorityId = val_1: val_2 (24.0/3.0)
+|   |   |   |   permittingAuthorityId = val_0: val_1 (11.0/2.0)
+|   |   |   fedRegulatedId = val_val_1
+|   |   |   |   permittingAuthorityId = val_1
+|   |   |   |   |   foundationTypeIds__1 = T
+|   |   |   |   |   |   foundationTypeIds__3 = T: val_2 (14.0/7.0)
+|   |   |   |   |   |   foundationTypeIds__3 = F: val_4 (9.0/1.0)
+|   |   |   |   |   foundationTypeIds__1 = F: val_2 (54.0/20.0)
+|   |   |   |   permittingAuthorityId = val_0
+|   |   |   |   |   foundationTypeIds__1 = T
+|   |   |   |   |   |   purposeIds__5 = F
+|   |   |   |   |   |   |   foundationTypeIds__3 = T: val_4 (7.0)
+|   |   |   |   |   |   |   foundationTypeIds__3 = F: val_3 (25.0/11.0)
+|   |   |   |   |   |   purposeIds__5 = T: val_4 (36.0/3.0)
+|   |   |   |   |   foundationTypeIds__1 = F: val_4 (74.0/25.0)
+|   |   primaryOwnerTypeId = val_4
+|   |   |   ownerTypeIds__1 = F
+|   |   |   |   fedRegulatedId = val_val_0
+|   |   |   |   |   stateRegulatedId = val_1
+|   |   |   |   |   |   foundationTypeIds__1 = T
+|   |   |   |   |   |   |   purposeIds__5 = F: val_4 (22.0/8.0)
+|   |   |   |   |   |   |   purposeIds__5 = T
+|   |   |   |   |   |   |   |   purposeIds__8 = F: val_2 (25.0/13.0)
+|   |   |   |   |   |   |   |   purposeIds__8 = T: val_4 (3.0)
+|   |   |   |   |   |   foundationTypeIds__1 = F
+|   |   |   |   |   |   |   foundationTypeIds__3 = T: val_2 (44.0/19.0)
+|   |   |   |   |   |   |   foundationTypeIds__3 = F
+|   |   |   |   |   |   |   |   ownerTypeIds__5 = T: val_2 (2.0/1.0)
+|   |   |   |   |   |   |   |   ownerTypeIds__5 = F: val_4 (1021.0/649.0)
+|   |   |   |   |   stateRegulatedId = val_0: val_2 (40.0/12.0)
+|   |   |   |   fedRegulatedId = val_val_1: val_4 (34.0/13.0)
+|   |   |   ownerTypeIds__1 = T: val_3 (4.0/1.0)
+|   |   primaryOwnerTypeId = val_6
+|   |   |   ownerTypeIds__1 = F
+|   |   |   |   fedRegulatedId = val_val_0: val_1 (562.0/64.0)
+|   |   |   |   fedRegulatedId = val_val_1
+|   |   |   |   |   foundationTypeIds__3 = T: val_4 (7.0/1.0)
+|   |   |   |   |   foundationTypeIds__3 = F
+|   |   |   |   |   |   purposeIds__5 = F: val_2 (41.0/17.0)
+|   |   |   |   |   |   purposeIds__5 = T
+|   |   |   |   |   |   |   foundationTypeIds__1 = T: val_4 (16.0/2.0)
+|   |   |   |   |   |   |   foundationTypeIds__1 = F: val_2 (22.0/12.0)
+|   |   |   ownerTypeIds__1 = T: val_2 (163.0)
+|   |   primaryOwnerTypeId = val_2
+|   |   |   fedRegulatedId = val_val_0
+|   |   |   |   foundationTypeIds__1 = T
+|   |   |   |   |   stateRegulatedId = val_1: val_4 (41.0/5.0)
+|   |   |   |   |   stateRegulatedId = val_0: val_2 (5.0/2.0)
+|   |   |   |   foundationTypeIds__1 = F
+|   |   |   |   |   purposeIds__8 = F
+|   |   |   |   |   |   stateRegulatedId = val_1: val_3 (55.0/32.0)
+|   |   |   |   |   |   stateRegulatedId = val_0: val_4 (5.0/2.0)
+|   |   |   |   |   purposeIds__8 = T: val_4 (96.0/40.0)
+|   |   |   fedRegulatedId = val_val_1
+|   |   |   |   foundationTypeIds__3 = T: val_4 (9.0/2.0)
+|   |   |   |   foundationTypeIds__3 = F: val_2 (85.0/35.0)
+|   |   primaryOwnerTypeId = val_7: val_2 (2.0/1.0)
+|   femaRegion = (4.0, 5.0]
+|   |   foundationTypeIds__1 = T
+|   |   |   purposeIds__5 = F
+|   |   |   |   primaryOwnerTypeId = val_5: val_3 (84.0/44.0)
+|   |   |   |   primaryOwnerTypeId = val_1
+|   |   |   |   |   foundationTypeIds__3 = T: val_4 (7.0/2.0)
+|   |   |   |   |   foundationTypeIds__3 = F: val_2 (9.0/3.0)
+|   |   |   |   primaryOwnerTypeId = val_3: val_3 (9.0/5.0)
+|   |   |   |   primaryOwnerTypeId = val_4: val_2 (8.0/3.0)
+|   |   |   |   primaryOwnerTypeId = val_6: val_4 (4.0/1.0)
+|   |   |   |   primaryOwnerTypeId = val_2: val_4 (10.0/3.0)
+|   |   |   |   primaryOwnerTypeId = val_7: val_3 (0.0)
+|   |   |   purposeIds__5 = T: val_4 (160.0/61.0)
+|   |   foundationTypeIds__1 = F
+|   |   |   fedRegulatedId = val_val_0
+|   |   |   |   permittingAuthorityId = val_1
+|   |   |   |   |   purposeIds__8 = F
+|   |   |   |   |   |   primaryOwnerTypeId = val_5
+|   |   |   |   |   |   |   ownerTypeIds__1 = F: val_2 (1029.0/479.0)
+|   |   |   |   |   |   |   ownerTypeIds__1 = T: val_3 (2.0)
+|   |   |   |   |   |   primaryOwnerTypeId = val_1
+|   |   |   |   |   |   |   ownerTypeIds__5 = T: val_4 (2.0)
+|   |   |   |   |   |   |   ownerTypeIds__5 = F: val_2 (2434.0/923.0)
+|   |   |   |   |   |   primaryOwnerTypeId = val_3: val_2 (55.0/5.0)
+|   |   |   |   |   |   primaryOwnerTypeId = val_4: val_2 (532.0/148.0)
+|   |   |   |   |   |   primaryOwnerTypeId = val_6: val_3 (39.0/13.0)
+|   |   |   |   |   |   primaryOwnerTypeId = val_2
+|   |   |   |   |   |   |   foundationTypeIds__3 = T: val_4 (10.0/3.0)
+|   |   |   |   |   |   |   foundationTypeIds__3 = F: val_3 (68.0/23.0)
+|   |   |   |   |   |   primaryOwnerTypeId = val_7: val_2 (2.0)
+|   |   |   |   |   purposeIds__8 = T
+|   |   |   |   |   |   stateRegulatedId = val_1
+|   |   |   |   |   |   |   primaryOwnerTypeId = val_5: val_4 (188.0/93.0)
+|   |   |   |   |   |   |   primaryOwnerTypeId = val_1: val_2 (88.0/38.0)
+|   |   |   |   |   |   |   primaryOwnerTypeId = val_3: val_4 (2.0/1.0)
+|   |   |   |   |   |   |   primaryOwnerTypeId = val_4
+|   |   |   |   |   |   |   |   purposeIds__5 = F: val_2 (2.0)
+|   |   |   |   |   |   |   |   purposeIds__5 = T: val_4 (22.0/12.0)
+|   |   |   |   |   |   |   primaryOwnerTypeId = val_6: val_3 (23.0/12.0)
+|   |   |   |   |   |   |   primaryOwnerTypeId = val_2: val_4 (29.0/14.0)
+|   |   |   |   |   |   |   primaryOwnerTypeId = val_7: val_4 (0.0)
+|   |   |   |   |   |   stateRegulatedId = val_0: val_2 (6.0)
+|   |   |   |   permittingAuthorityId = val_0: val_2 (436.0/139.0)
+|   |   |   fedRegulatedId = val_val_1
+|   |   |   |   permittingAuthorityId = val_1: val_2 (135.0/55.0)
+|   |   |   |   permittingAuthorityId = val_0
+|   |   |   |   |   primaryOwnerTypeId = val_5: val_4 (7.0/3.0)
+|   |   |   |   |   primaryOwnerTypeId = val_1
+|   |   |   |   |   |   purposeIds__8 = F
+|   |   |   |   |   |   |   foundationTypeIds__3 = T: val_2 (18.0/5.0)
+|   |   |   |   |   |   |   foundationTypeIds__3 = F: val_4 (8.0/2.0)
+|   |   |   |   |   |   purposeIds__8 = T: val_4 (7.0/2.0)
+|   |   |   |   |   primaryOwnerTypeId = val_3: val_4 (85.0/31.0)
+|   |   |   |   |   primaryOwnerTypeId = val_4: val_4 (0.0)
+|   |   |   |   |   primaryOwnerTypeId = val_6
+|   |   |   |   |   |   foundationTypeIds__3 = T: val_2 (7.0/1.0)
+|   |   |   |   |   |   foundationTypeIds__3 = F: val_4 (16.0/6.0)
+|   |   |   |   |   primaryOwnerTypeId = val_2
+|   |   |   |   |   |   purposeIds__5 = F: val_2 (30.0/13.0)
+|   |   |   |   |   |   purposeIds__5 = T: val_4 (47.0/15.0)
+|   |   |   |   |   primaryOwnerTypeId = val_7: val_4 (0.0)
+|   femaRegion = (7.0, 8.0]
+|   |   foundationTypeIds__1 = T
+|   |   |   foundationTypeIds__3 = T
+|   |   |   |   ownerTypeIds__1 = F: val_4 (148.0/62.0)
+|   |   |   |   ownerTypeIds__1 = T: val_2 (213.0/95.0)
+|   |   |   foundationTypeIds__3 = F: val_4 (71.0/14.0)
+|   |   foundationTypeIds__1 = F
+|   |   |   fedRegulatedId = val_val_0
+|   |   |   |   ownerTypeIds__5 = T
+|   |   |   |   |   purposeIds__8 = F: val_2 (555.0/241.0)
+|   |   |   |   |   purposeIds__8 = T
+|   |   |   |   |   |   foundationTypeIds__3 = T
+|   |   |   |   |   |   |   purposeIds__5 = F: val_4 (47.0/26.0)
+|   |   |   |   |   |   |   purposeIds__5 = T: val_2 (21.0/9.0)
+|   |   |   |   |   |   foundationTypeIds__3 = F: val_4 (86.0/48.0)
+|   |   |   |   ownerTypeIds__5 = F: val_2 (2831.0/813.0)
+|   |   |   fedRegulatedId = val_val_1
+|   |   |   |   purposeIds__5 = F
+|   |   |   |   |   purposeIds__8 = F
+|   |   |   |   |   |   enforcementAuthorityId = val_1
+|   |   |   |   |   |   |   permittingAuthorityId = val_1: val_2 (182.0/53.0)
+|   |   |   |   |   |   |   permittingAuthorityId = val_0: val_4 (6.0/1.0)
+|   |   |   |   |   |   enforcementAuthorityId = val_0: val_2 (222.0/68.0)
+|   |   |   |   |   purposeIds__8 = T
+|   |   |   |   |   |   stateRegulatedId = val_1: val_2 (19.0/9.0)
+|   |   |   |   |   |   stateRegulatedId = val_0: val_4 (4.0)
+|   |   |   |   purposeIds__5 = T: val_4 (110.0/29.0)
+|   femaRegion = (3.0, 4.0]
+|   |   primaryOwnerTypeId = val_5
+|   |   |   purposeIds__8 = F
+|   |   |   |   permittingAuthorityId = val_1
+|   |   |   |   |   purposeIds__5 = F: val_2 (964.0/372.0)
+|   |   |   |   |   purposeIds__5 = T: val_4 (217.0/83.0)
+|   |   |   |   permittingAuthorityId = val_0
+|   |   |   |   |   fedRegulatedId = val_val_0: val_2 (277.0/60.0)
+|   |   |   |   |   fedRegulatedId = val_val_1
+|   |   |   |   |   |   foundationTypeIds__3 = T: val_4 (2.0)
+|   |   |   |   |   |   foundationTypeIds__3 = F: val_3 (3.0/1.0)
+|   |   |   purposeIds__8 = T
+|   |   |   |   stateRegulatedId = val_1: val_4 (228.0/66.0)
+|   |   |   |   stateRegulatedId = val_0
+|   |   |   |   |   foundationTypeIds__1 = T: val_4 (8.0/3.0)
+|   |   |   |   |   foundationTypeIds__1 = F: val_2 (54.0/19.0)
+|   |   primaryOwnerTypeId = val_1
+|   |   |   stateRegulatedId = val_1
+|   |   |   |   ownerTypeIds__5 = T: val_4 (72.0/21.0)
+|   |   |   |   ownerTypeIds__5 = F
+|   |   |   |   |   ownerTypeIds__1 = F: val_4 (10.0/3.0)
+|   |   |   |   |   ownerTypeIds__1 = T: val_2 (8287.0/3381.0)
+|   |   |   stateRegulatedId = val_0
+|   |   |   |   fedRegulatedId = val_val_0: val_2 (5872.0/1031.0)
+|   |   |   |   fedRegulatedId = val_val_1
+|   |   |   |   |   permittingAuthorityId = val_1: val_2 (5.0/2.0)
+|   |   |   |   |   permittingAuthorityId = val_0
+|   |   |   |   |   |   foundationTypeIds__1 = T: val_2 (41.0/18.0)
+|   |   |   |   |   |   foundationTypeIds__1 = F: val_4 (100.0/35.0)
+|   |   primaryOwnerTypeId = val_3
+|   |   |   purposeIds__8 = F
+|   |   |   |   foundationTypeIds__1 = T
+|   |   |   |   |   permittingAuthorityId = val_1: val_2 (8.0/2.0)
+|   |   |   |   |   permittingAuthorityId = val_0: val_4 (36.0/10.0)
+|   |   |   |   foundationTypeIds__1 = F
+|   |   |   |   |   ownerTypeIds__5 = T: val_4 (2.0/1.0)
+|   |   |   |   |   ownerTypeIds__5 = F: val_2 (229.0/101.0)
+|   |   |   purposeIds__8 = T
+|   |   |   |   purposeIds__5 = F: val_2 (15.0/5.0)
+|   |   |   |   purposeIds__5 = T: val_4 (75.0/8.0)
+|   |   primaryOwnerTypeId = val_4
+|   |   |   stateRegulatedId = val_1
+|   |   |   |   ownerTypeIds__5 = T: val_4 (48.0/4.0)
+|   |   |   |   ownerTypeIds__5 = F
+|   |   |   |   |   purposeIds__5 = F
+|   |   |   |   |   |   foundationTypeIds__3 = T: val_2 (4.0/2.0)
+|   |   |   |   |   |   foundationTypeIds__3 = F
+|   |   |   |   |   |   |   fedRegulatedId = val_val_0: val_4 (226.0/115.0)
+|   |   |   |   |   |   |   fedRegulatedId = val_val_1: val_2 (3.0/1.0)
+|   |   |   |   |   purposeIds__5 = T
+|   |   |   |   |   |   foundationTypeIds__1 = T: val_4 (5.0/1.0)
+|   |   |   |   |   |   foundationTypeIds__1 = F: val_2 (194.0/103.0)
+|   |   |   stateRegulatedId = val_0
+|   |   |   |   foundationTypeIds__3 = T: val_4 (3.0/1.0)
+|   |   |   |   foundationTypeIds__3 = F: val_2 (238.0/26.0)
+|   |   primaryOwnerTypeId = val_6
+|   |   |   fedRegulatedId = val_val_0
+|   |   |   |   purposeIds__8 = F
+|   |   |   |   |   foundationTypeIds__3 = T: val_2 (4.0/1.0)
+|   |   |   |   |   foundationTypeIds__3 = F
+|   |   |   |   |   |   stateRegulatedId = val_1: val_4 (6.0/3.0)
+|   |   |   |   |   |   stateRegulatedId = val_0: val_1 (254.0/148.0)
+|   |   |   |   purposeIds__8 = T: val_2 (9.0/4.0)
+|   |   |   fedRegulatedId = val_val_1: val_2 (6.0)
+|   |   primaryOwnerTypeId = val_2
+|   |   |   foundationTypeIds__3 = T
+|   |   |   |   fedRegulatedId = val_val_0: val_2 (3.0/1.0)
+|   |   |   |   fedRegulatedId = val_val_1: val_4 (32.0/1.0)
+|   |   |   foundationTypeIds__3 = F
+|   |   |   |   foundationTypeIds__1 = T: val_4 (61.0/12.0)
+|   |   |   |   foundationTypeIds__1 = F
+|   |   |   |   |   stateRegulatedId = val_1: val_4 (86.0/22.0)
+|   |   |   |   |   stateRegulatedId = val_0: val_2 (34.0/14.0)
+|   |   primaryOwnerTypeId = val_7: val_2 (1.0)
+|   femaRegion = (8.0, 10.0]
+|   |   ownerTypeIds__1 = F
+|   |   |   purposeIds__8 = F
+|   |   |   |   primaryOwnerTypeId = val_5: val_4 (452.0/165.0)
+|   |   |   |   primaryOwnerTypeId = val_1: val_4 (0.0)
+|   |   |   |   primaryOwnerTypeId = val_3
+|   |   |   |   |   fedRegulatedId = val_val_0
+|   |   |   |   |   |   stateRegulatedId = val_1: val_2 (26.0/2.0)
+|   |   |   |   |   |   stateRegulatedId = val_0
+|   |   |   |   |   |   |   foundationTypeIds__1 = T: val_4 (7.0/3.0)
+|   |   |   |   |   |   |   foundationTypeIds__1 = F: val_2 (6.0/2.0)
+|   |   |   |   |   fedRegulatedId = val_val_1
+|   |   |   |   |   |   purposeIds__5 = F
+|   |   |   |   |   |   |   permittingAuthorityId = val_1
+|   |   |   |   |   |   |   |   foundationTypeIds__3 = T: val_4 (22.0/10.0)
+|   |   |   |   |   |   |   |   foundationTypeIds__3 = F: val_2 (36.0/14.0)
+|   |   |   |   |   |   |   permittingAuthorityId = val_0
+|   |   |   |   |   |   |   |   foundationTypeIds__3 = T: val_2 (15.0/2.0)
+|   |   |   |   |   |   |   |   foundationTypeIds__3 = F: val_4 (120.0/61.0)
+|   |   |   |   |   |   purposeIds__5 = T
+|   |   |   |   |   |   |   permittingAuthorityId = val_1
+|   |   |   |   |   |   |   |   stateRegulatedId = val_1: val_4 (14.0/4.0)
+|   |   |   |   |   |   |   |   stateRegulatedId = val_0: val_2 (13.0/7.0)
+|   |   |   |   |   |   |   permittingAuthorityId = val_0: val_4 (98.0/23.0)
+|   |   |   |   primaryOwnerTypeId = val_4: val_2 (108.0/50.0)
+|   |   |   |   primaryOwnerTypeId = val_6: val_2 (17.0/8.0)
+|   |   |   |   primaryOwnerTypeId = val_2
+|   |   |   |   |   purposeIds__5 = F
+|   |   |   |   |   |   foundationTypeIds__1 = T
+|   |   |   |   |   |   |   fedRegulatedId = val_val_0: val_4 (21.0/11.0)
+|   |   |   |   |   |   |   fedRegulatedId = val_val_1: val_2 (10.0/4.0)
+|   |   |   |   |   |   foundationTypeIds__1 = F: val_2 (92.0/45.0)
+|   |   |   |   |   purposeIds__5 = T
+|   |   |   |   |   |   foundationTypeIds__3 = T: val_4 (31.0/2.0)
+|   |   |   |   |   |   foundationTypeIds__3 = F
+|   |   |   |   |   |   |   foundationTypeIds__1 = T: val_4 (15.0/4.0)
+|   |   |   |   |   |   |   foundationTypeIds__1 = F: val_2 (21.0/10.0)
+|   |   |   |   primaryOwnerTypeId = val_7: val_2 (3.0/1.0)
+|   |   |   purposeIds__8 = T
+|   |   |   |   fedRegulatedId = val_val_0: val_4 (476.0/127.0)
+|   |   |   |   fedRegulatedId = val_val_1
+|   |   |   |   |   purposeIds__5 = F
+|   |   |   |   |   |   permittingAuthorityId = val_1: val_2 (30.0/11.0)
+|   |   |   |   |   |   permittingAuthorityId = val_0: val_4 (43.0/14.0)
+|   |   |   |   |   purposeIds__5 = T: val_4 (67.0/9.0)
+|   |   ownerTypeIds__1 = T
+|   |   |   fedRegulatedId = val_val_0
+|   |   |   |   purposeIds__5 = F: val_2 (1319.0/620.0)
+|   |   |   |   purposeIds__5 = T
+|   |   |   |   |   purposeIds__8 = F: val_2 (205.0/91.0)
+|   |   |   |   |   purposeIds__8 = T: val_4 (107.0/56.0)
+|   |   |   fedRegulatedId = val_val_1
+|   |   |   |   purposeIds__5 = F
+|   |   |   |   |   purposeIds__8 = F
+|   |   |   |   |   |   permittingAuthorityId = val_1
+|   |   |   |   |   |   |   stateRegulatedId = val_1: val_4 (88.0/41.0)
+|   |   |   |   |   |   |   stateRegulatedId = val_0: val_2 (5.0)
+|   |   |   |   |   |   permittingAuthorityId = val_0
+|   |   |   |   |   |   |   foundationTypeIds__1 = T: val_2 (11.0/4.0)
+|   |   |   |   |   |   |   foundationTypeIds__1 = F
+|   |   |   |   |   |   |   |   foundationTypeIds__3 = T: val_2 (6.0/2.0)
+|   |   |   |   |   |   |   |   foundationTypeIds__3 = F: val_3 (27.0/15.0)
+|   |   |   |   |   purposeIds__8 = T
+|   |   |   |   |   |   stateRegulatedId = val_1: val_3 (4.0/1.0)
+|   |   |   |   |   |   stateRegulatedId = val_0: val_4 (13.0/5.0)
+|   |   |   |   purposeIds__5 = T
+|   |   |   |   |   purposeIds__8 = F: val_4 (64.0/17.0)
+|   |   |   |   |   purposeIds__8 = T
+|   |   |   |   |   |   foundationTypeIds__1 = T: val_4 (3.0)
+|   |   |   |   |   |   foundationTypeIds__1 = F: val_2 (12.0/1.0)
+purposeIds__10 = T
+|   foundationTypeIds__1 = T
+|   |   ownerTypeIds__5 = T
+|   |   |   femaRegion = (5.0, 6.0]: val_4 (67.0/10.0)
+|   |   |   femaRegion = (6.0, 7.0]: val_2 (6.0/2.0)
+|   |   |   femaRegion = (0.999, 3.0]: val_2 (3.0/1.0)
+|   |   |   femaRegion = (4.0, 5.0]: val_4 (0.0)
+|   |   |   femaRegion = (7.0, 8.0]: val_2 (3.0/1.0)
+|   |   |   femaRegion = (3.0, 4.0]: val_4 (0.0)
+|   |   |   femaRegion = (8.0, 10.0]: val_4 (0.0)
+|   |   ownerTypeIds__5 = F: val_2 (230.0/55.0)
+|   foundationTypeIds__1 = F: val_2 (12312.0/1129.0)
+
+Number of Leaves  : 	264
+
+Size of the tree : 	462
+
+
+Time taken to build model: 0.39 seconds
+
+=== Evaluation on training set ===
+
+Time taken to test model on training data: 0.07 seconds
+
+=== Summary ===
+
+Correctly Classified Instances       53072               71.7054 %
+Incorrectly Classified Instances     20942               28.2946 %
+Kappa statistic                          0.3712
+Mean absolute error                      0.2031
+Root mean squared error                  0.3187
+Relative absolute error                 77.4869 %
+Root relative squared error             88.0276 %
+Total Number of Instances            74014     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.395    0.057    0.607      0.395    0.479      0.404    0.803     0.530     val_4
+                 0.929    0.549    0.761      0.929    0.837      0.451    0.801     0.856     val_2
+                 0.332    0.013    0.549      0.332    0.414      0.407    0.897     0.378     val_1
+                 0.197    0.039    0.414      0.197    0.267      0.222    0.736     0.295     val_3
+Weighted Avg.    0.717    0.374    0.681      0.717    0.684      0.413    0.797     0.707     
+
+=== Confusion Matrix ===
+
+     a     b     c     d   <-- classified as
+  5312  6988   254   884 |     a = val_4
+  1899 44903   308  1201 |     b = val_2
+    75  1667  1079   433 |     c = val_1
+  1466  5444   323  1778 |     d = val_3
+

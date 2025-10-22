@@ -1,0 +1,98 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.misc.InputMappedClassifier -I -trim -W weka.classifiers.bayes.BayesNet -- -D -Q weka.classifiers.bayes.net.search.local.K2 -- -P 1 -S BAYES -E weka.classifiers.bayes.net.estimate.SimpleEstimator -- -A 0.5
+Relation:     train_GainRatioAttributeEval
+Instances:    74014
+Attributes:   12
+              ownerTypeIds__6
+              foundationTypeIds__2
+              damTypeIds__4
+              widthOfLocks
+              lengthOfLocks
+              damTypeIds__1
+              isAssociatedStructureId
+              foundationTypeIds__1
+              coreTypeIds__1
+              damTypeIds__7
+              purposeIds__3
+              hazardId
+Test mode:    user supplied test set:  size unknown (reading incrementally)
+
+=== Classifier model (full training set) ===
+
+InputMappedClassifier:
+
+Bayes Network Classifier
+not using ADTree
+#attributes=12 #classindex=11
+Network structure (nodes followed by parents)
+ownerTypeIds__6(2): hazardId 
+foundationTypeIds__2(2): hazardId 
+damTypeIds__4(2): hazardId 
+widthOfLocks(2): hazardId 
+lengthOfLocks(2): hazardId 
+damTypeIds__1(2): hazardId 
+isAssociatedStructureId(2): hazardId 
+foundationTypeIds__1(2): hazardId 
+coreTypeIds__1(2): hazardId 
+damTypeIds__7(2): hazardId 
+purposeIds__3(2): hazardId 
+hazardId(4): 
+LogScore Bayes: -106040.18761610598
+LogScore BDeu: -106113.71795583371
+LogScore MDL: -106215.06255338535
+LogScore ENTROPY: -105951.58032911352
+LogScore AIC: -105998.58032911352
+
+Attribute mappings:
+
+Model attributes                   	    Incoming attributes
+-----------------------------------	    ----------------
+(nominal) ownerTypeIds__6          	--> 1 (nominal) ownerTypeIds__6
+(nominal) foundationTypeIds__2     	--> 2 (nominal) foundationTypeIds__2
+(nominal) damTypeIds__4            	--> 3 (nominal) damTypeIds__4
+(nominal) widthOfLocks             	--> 4 (nominal) widthOfLocks
+(nominal) lengthOfLocks            	--> 5 (nominal) lengthOfLocks
+(nominal) damTypeIds__1            	--> 6 (nominal) damTypeIds__1
+(nominal) isAssociatedStructureId  	--> 7 (nominal) isAssociatedStructureId
+(nominal) foundationTypeIds__1     	--> 8 (nominal) foundationTypeIds__1
+(nominal) coreTypeIds__1           	--> 9 (nominal) coreTypeIds__1
+(nominal) damTypeIds__7            	--> 10 (nominal) damTypeIds__7
+(nominal) purposeIds__3            	--> 11 (nominal) purposeIds__3
+(nominal) hazardId                 	--> 12 (nominal) hazardId
+
+
+Time taken to build model: 0.05 seconds
+
+=== Evaluation on test set ===
+
+Time taken to test model on supplied test set: 0.06 seconds
+
+=== Summary ===
+
+Correctly Classified Instances       12375               66.8774 %
+Incorrectly Classified Instances      6129               33.1226 %
+Kappa statistic                          0.1606
+Mean absolute error                      0.2482
+Root mean squared error                  0.3542
+Relative absolute error                 94.4823 %
+Root relative squared error             97.6153 %
+Total Number of Instances            18504     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.164    0.034    0.523      0.164    0.249      0.216    0.571     0.253     val_4
+                 0.959    0.824    0.683      0.959    0.798      0.226    0.568     0.682     val_2
+                 0.181    0.008    0.481      0.181    0.263      0.278    0.617     0.124     val_1
+                 0.067    0.008    0.542      0.067    0.119      0.158    0.543     0.171     val_3
+Weighted Avg.    0.669    0.543    0.628      0.669    0.590      0.218    0.567     0.516     
+
+=== Confusion Matrix ===
+
+     a     b     c     d   <-- classified as
+   556  2750    23    65 |     a = val_4
+   331 11526   102    64 |     b = val_2
+     0   616   137     3 |     c = val_1
+   177  1975    23   156 |     d = val_3
+

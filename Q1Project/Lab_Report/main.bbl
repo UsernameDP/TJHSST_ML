@@ -1,0 +1,27 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+U.S. Department~of Transportation%
+}{%
+U.S. Department~of Transportation%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+USDOT_Dams_NTAD}
+\APACinsertmetastar {%
+USDOT_Dams_NTAD}%
+\begin{APACrefauthors}%
+U.S. Department~of Transportation, B\BPBI o\BPBI T\BPBI S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {Dams – Dataset (National Transportation Atlas Database, NTAD).} {Dams – dataset (national transportation atlas database, ntad).}
+\newblock
+\APAChowpublished {\url{https://geodata.bts.gov/datasets/usdot::dams/about}}.
+\newblock
+\APACrefnote{Accessed: 2025-10-21}
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

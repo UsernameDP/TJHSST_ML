@@ -1,0 +1,89 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.BayesNet -D -Q weka.classifiers.bayes.net.search.local.K2 -- -P 1 -S BAYES -E weka.classifiers.bayes.net.estimate.SimpleEstimator -- -A 0.5
+Relation:     train_InfoGainAttributeEval
+Instances:    74014
+Attributes:   17
+              state
+              longitude
+              huc2
+              nidStorage
+              maxStorage
+              femaRegion
+              latitude
+              damHeight
+              normalStorage
+              nidHeight
+              primaryPurposeId
+              hydraulicHeight
+              nidHeightId
+              structuralHeight
+              volume
+              maxDischarge
+              hazardId
+Test mode:    evaluate on training data
+
+=== Classifier model (full training set) ===
+
+Bayes Network Classifier
+not using ADTree
+#attributes=17 #classindex=16
+Network structure (nodes followed by parents)
+state(52): hazardId 
+longitude(999): hazardId 
+huc2(22): hazardId 
+nidStorage(97): hazardId 
+maxStorage(96): hazardId 
+femaRegion(7): hazardId 
+latitude(999): hazardId 
+damHeight(36): hazardId 
+normalStorage(91): hazardId 
+nidHeight(37): hazardId 
+primaryPurposeId(12): hazardId 
+hydraulicHeight(29): hazardId 
+nidHeightId(5): hazardId 
+structuralHeight(27): hazardId 
+volume(30): hazardId 
+maxDischarge(47): hazardId 
+hazardId(4): 
+LogScore Bayes: -3999017.556352559
+LogScore BDeu: -4095445.212620183
+LogScore MDL: -4069805.423399475
+LogScore ENTROPY: -4012158.8763316656
+LogScore AIC: -4022441.8763316656
+
+
+Time taken to build model: 0.06 seconds
+
+=== Evaluation on training set ===
+
+Time taken to test model on training data: 0.14 seconds
+
+=== Summary ===
+
+Correctly Classified Instances       48460               65.4741 %
+Incorrectly Classified Instances     25554               34.5259 %
+Kappa statistic                          0.4151
+Mean absolute error                      0.176 
+Root mean squared error                  0.3814
+Relative absolute error                 67.1494 %
+Root relative squared error            105.346  %
+Total Number of Instances            74014     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.514    0.085    0.572      0.514    0.541      0.447    0.858     0.606     val_4
+                 0.711    0.229    0.854      0.711    0.776      0.460    0.834     0.899     val_2
+                 0.837    0.101    0.276      0.837    0.415      0.444    0.950     0.618     val_1
+                 0.499    0.113    0.379      0.499    0.431      0.344    0.819     0.446     val_3
+Weighted Avg.    0.655    0.183    0.719      0.655    0.675      0.443    0.842     0.778     
+
+=== Confusion Matrix ===
+
+     a     b     c     d   <-- classified as
+  6909  3105   795  2629 |     a = val_4
+  3423 34335  5966  4587 |     b = val_2
+    92   305  2722   135 |     c = val_1
+  1658  2474   385  4494 |     d = val_3
+

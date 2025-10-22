@@ -1,0 +1,104 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.misc.InputMappedClassifier -I -trim -W weka.classifiers.bayes.BayesNet -- -D -Q weka.classifiers.bayes.net.search.local.K2 -- -P 1 -S BAYES -E weka.classifiers.bayes.net.estimate.SimpleEstimator -- -A 0.5
+Relation:     train_CorrelationAttributeEval
+Instances:    74014
+Attributes:   14
+              purposeIds__10
+              ownerTypeIds__1
+              foundationTypeIds__1
+              purposeIds__8
+              stateRegulatedId
+              primaryOwnerTypeId
+              purposeIds__5
+              fedRegulatedId
+              ownerTypeIds__5
+              permittingAuthorityId
+              enforcementAuthorityId
+              femaRegion
+              foundationTypeIds__3
+              hazardId
+Test mode:    user supplied test set:  size unknown (reading incrementally)
+
+=== Classifier model (full training set) ===
+
+InputMappedClassifier:
+
+Bayes Network Classifier
+not using ADTree
+#attributes=14 #classindex=13
+Network structure (nodes followed by parents)
+purposeIds__10(2): hazardId 
+ownerTypeIds__1(2): hazardId 
+foundationTypeIds__1(2): hazardId 
+purposeIds__8(2): hazardId 
+stateRegulatedId(2): hazardId 
+primaryOwnerTypeId(7): hazardId 
+purposeIds__5(2): hazardId 
+fedRegulatedId(2): hazardId 
+ownerTypeIds__5(2): hazardId 
+permittingAuthorityId(2): hazardId 
+enforcementAuthorityId(2): hazardId 
+femaRegion(7): hazardId 
+foundationTypeIds__3(2): hazardId 
+hazardId(4): 
+LogScore Bayes: -653677.2808655705
+LogScore BDeu: -653903.5691478403
+LogScore MDL: -653916.5273033667
+LogScore ENTROPY: -653383.9568500512
+LogScore AIC: -653478.9568500512
+
+Attribute mappings:
+
+Model attributes                  	    Incoming attributes
+----------------------------------	    ----------------
+(nominal) purposeIds__10          	--> 1 (nominal) purposeIds__10
+(nominal) ownerTypeIds__1         	--> 2 (nominal) ownerTypeIds__1
+(nominal) foundationTypeIds__1    	--> 3 (nominal) foundationTypeIds__1
+(nominal) purposeIds__8           	--> 4 (nominal) purposeIds__8
+(nominal) stateRegulatedId        	--> 5 (nominal) stateRegulatedId
+(nominal) primaryOwnerTypeId      	--> 6 (nominal) primaryOwnerTypeId
+(nominal) purposeIds__5           	--> 7 (nominal) purposeIds__5
+(nominal) fedRegulatedId          	--> 8 (nominal) fedRegulatedId
+(nominal) ownerTypeIds__5         	--> 9 (nominal) ownerTypeIds__5
+(nominal) permittingAuthorityId   	--> 10 (nominal) permittingAuthorityId
+(nominal) enforcementAuthorityId  	--> 11 (nominal) enforcementAuthorityId
+(nominal) femaRegion              	--> 12 (nominal) femaRegion
+(nominal) foundationTypeIds__3    	--> 13 (nominal) foundationTypeIds__3
+(nominal) hazardId                	--> 14 (nominal) hazardId
+
+
+Time taken to build model: 0.14 seconds
+
+=== Evaluation on test set ===
+
+Time taken to test model on supplied test set: 0.08 seconds
+
+=== Summary ===
+
+Correctly Classified Instances       11963               64.6509 %
+Incorrectly Classified Instances      6541               35.3491 %
+Kappa statistic                          0.2966
+Mean absolute error                      0.2162
+Root mean squared error                  0.3498
+Relative absolute error                 82.2989 %
+Root relative squared error             96.4073 %
+Total Number of Instances            18504     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.473    0.151    0.413      0.473    0.441      0.306    0.743     0.426     val_4
+                 0.823    0.463    0.767      0.823    0.794      0.374    0.768     0.843     val_2
+                 0.431    0.049    0.273      0.431    0.335      0.308    0.865     0.242     val_1
+                 0.060    0.025    0.259      0.060    0.097      0.069    0.686     0.243     val_3
+Weighted Avg.    0.647    0.333    0.618      0.647    0.623      0.320    0.757     0.667     
+
+=== Confusion Matrix ===
+
+    a    b    c    d   <-- classified as
+ 1604 1465  186  139 |    a = val_4
+ 1551 9894  331  247 |    b = val_2
+   25  393  326   12 |    c = val_1
+  701 1141  350  139 |    d = val_3
+

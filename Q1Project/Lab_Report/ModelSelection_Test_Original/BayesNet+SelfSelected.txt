@@ -1,0 +1,83 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.misc.InputMappedClassifier -I -trim -W weka.classifiers.bayes.BayesNet -- -D -Q weka.classifiers.bayes.net.search.local.K2 -- -P 1 -S BAYES -E weka.classifiers.bayes.net.estimate.SimpleEstimator -- -A 0.5
+Relation:     train_SelfSelected
+Instances:    74014
+Attributes:   7
+              primaryPurposeId
+              damHeight
+              state
+              surfaceArea
+              damLength
+              volume
+              hazardId
+Test mode:    user supplied test set:  size unknown (reading incrementally)
+
+=== Classifier model (full training set) ===
+
+InputMappedClassifier:
+
+Bayes Network Classifier
+not using ADTree
+#attributes=7 #classindex=6
+Network structure (nodes followed by parents)
+primaryPurposeId(12): hazardId 
+damHeight(36): hazardId 
+state(52): hazardId 
+surfaceArea(66): hazardId 
+damLength(81): hazardId 
+volume(30): hazardId 
+hazardId(4): 
+LogScore Bayes: -1401279.6778572088
+LogScore BDeu: -1407791.286227483
+LogScore MDL: -1406514.0200963975
+LogScore ENTROPY: -1400420.292909515
+LogScore AIC: -1401507.292909515
+
+Attribute mappings:
+
+Model attributes            	    Incoming attributes
+----------------------------	    ----------------
+(nominal) primaryPurposeId  	--> 1 (nominal) primaryPurposeId
+(nominal) damHeight         	--> 2 (nominal) damHeight
+(nominal) state             	--> 3 (nominal) state
+(nominal) surfaceArea       	--> 4 (nominal) surfaceArea
+(nominal) damLength         	--> 5 (nominal) damLength
+(nominal) volume            	--> 6 (nominal) volume
+(nominal) hazardId          	--> 7 (nominal) hazardId
+
+
+Time taken to build model: 0.03 seconds
+
+=== Evaluation on test set ===
+
+Time taken to test model on supplied test set: 0.07 seconds
+
+=== Summary ===
+
+Correctly Classified Instances       12564               67.8988 %
+Incorrectly Classified Instances      5940               32.1012 %
+Kappa statistic                          0.4074
+Mean absolute error                      0.185 
+Root mean squared error                  0.3317
+Relative absolute error                 70.4192 %
+Root relative squared error             91.4251 %
+Total Number of Instances            18504     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.502    0.085    0.570      0.502    0.534      0.438    0.847     0.596     val_4
+                 0.785    0.343    0.809      0.785    0.797      0.436    0.815     0.884     val_2
+                 0.712    0.056    0.350      0.712    0.469      0.470    0.940     0.547     val_1
+                 0.380    0.088    0.382      0.380    0.381      0.292    0.801     0.403     val_3
+Weighted Avg.    0.679    0.252    0.693      0.679    0.683      0.420    0.824     0.757     
+
+=== Confusion Matrix ===
+
+    a    b    c    d   <-- classified as
+ 1703 1113   88  490 |    a = val_4
+  821 9437  860  905 |    b = val_2
+   16  166  538   36 |    c = val_1
+  447  946   52  886 |    d = val_3
+

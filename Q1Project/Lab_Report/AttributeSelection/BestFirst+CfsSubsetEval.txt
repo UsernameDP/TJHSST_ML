@@ -1,0 +1,31 @@
+=== Attribute Selection on all input data ===
+
+Search Method:
+	Best first.
+	Start set: no attributes
+	Search direction: forward
+	Stale search after 5 node expansions
+	Total number of subsets evaluated: 1399
+	Merit of best subset found:    0.139
+
+Attribute Subset Evaluator (supervised, Class (nominal): 80 hazardId):
+	CFS Subset Evaluator
+	Including locally predictive attributes
+
+Selected attributes: 3,10,11,22,24,27,56,60,63,65,66,68,71,78,79 : 15
+                     primaryPurposeId
+                     ownerTypeIds__6
+                     primaryOwnerTypeId
+                     purposeIds__8
+                     purposeIds__10
+                     state
+                     foundationTypeIds__1
+                     damHeight
+                     nidHeightId
+                     volume
+                     nidStorage
+                     normalStorage
+                     maxDischarge
+                     huc2
+                     femaRegion
+
